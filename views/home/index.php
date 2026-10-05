@@ -22,14 +22,10 @@
                 <?php foreach ($heroSlides as $idx => $slide): ?>
                     <?php
                         $imageDesktop = Helper::baseUrl($slide['image_desktop']);
-                        $imageMobile = !empty($slide['image_mobile']) ? Helper::baseUrl($slide['image_mobile']) : $imageDesktop;
                     ?>
-                    <div class="carousel-item <?= $idx === 0 ? 'active' : '' ?> position-relative" style="min-height: 480px; background: #0C1406;">
-                        <!-- Background Image -->
-                        <picture>
-                            <source media="(max-width: 767px)" srcset="<?= $imageMobile ?>">
-                            <img src="<?= $imageDesktop ?>" class="d-block w-100 position-absolute top-0 start-0 h-100" alt="<?= Helper::sanitize($slide['image_alt']) ?>" style="object-fit: cover; filter: brightness(0.65);">
-                        </picture>
+                    <div class="carousel-item <?= $idx === 0 ? 'active' : '' ?> position-relative" style="min-height: 440px; background: #0C1406;">
+                        <!-- Background Image for all devices -->
+                        <img src="<?= $imageDesktop ?>" class="d-block w-100 position-absolute top-0 start-0 h-100" alt="<?= Helper::sanitize($slide['image_alt'] ?? 'Hero Image') ?>" style="object-fit: cover; object-position: center; filter: brightness(0.60);">
 
                         <!-- Slide Caption Overlay -->
                         <div class="container position-relative z-1 py-5">
