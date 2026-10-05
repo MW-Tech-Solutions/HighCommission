@@ -74,13 +74,20 @@ $faviconUrl = SystemSetting::getFaviconUrl();
                     <div style="height: 2px; background: linear-gradient(90deg, transparent 0%, #D4AF37 50%, #008852 100%); margin-top: 3px;"></div>
                 </div>
 
-                <!-- Global Website Search Box -->
-                <form action="<?= Helper::baseUrl('search') ?>" method="GET" class="d-flex align-items-center">
-                    <div class="input-group input-group-sm rounded-pill overflow-hidden border border-emerald" style="max-width: 240px;">
-                        <input type="text" name="q" class="form-control border-0 px-3 bg-light" placeholder="Search the website..." aria-label="Search the website">
-                        <button class="btn btn-emerald border-0 px-3" type="submit"><i class="bi bi-search"></i></button>
+                <!-- Global Website Live Search Box -->
+                <div class="position-relative" style="max-width: 270px;">
+                    <form action="<?= Helper::baseUrl('search') ?>" method="GET" class="d-flex align-items-center" id="headerSearchForm">
+                        <div class="input-group input-group-sm rounded-pill overflow-hidden border border-emerald bg-light">
+                            <input type="text" name="q" id="headerSearchInput" class="form-control border-0 px-3 bg-light" placeholder="Search the website..." aria-label="Search the website" autocomplete="off">
+                            <button class="btn btn-emerald border-0 px-3" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
+
+                    <!-- Live Search Dropdown Results Panel -->
+                    <div id="liveSearchResults" class="dropdown-menu shadow-lg border-0 rounded-4 p-2 w-100 mt-2" 
+                         style="display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 1060; max-height: 380px; overflow-y: auto; background: #ffffff; min-width: 320px;">
                     </div>
-                </form>
+                </div>
 
                 <!-- Emergency Contact Pill -->
                 <a href="<?= Helper::baseUrl('emergency') ?>" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold">
@@ -262,3 +269,80 @@ $faviconUrl = SystemSetting::getFaviconUrl();
         </div>
     </div>
 <?php endif; ?>
+
+<!-- Header Live Search Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('headerSearchInput');
+    const searchResults = document.getElementById('liveSearchResults');
+    let debounceTimer;
+
+    if (!searchInput || !searchResults) return;
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
+    searchInput.addEventListener('input', function() {
+        clearTimeout(debounceTimer);
+        const query = this.value.trim();
+
+        if (query.length < 2) {
+            searchResults.style.display = 'none';
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        debounceTimer = setTimeout(() => {
+            searchResults.style.display = 'block';
+            searchResults.innerHTML = '<div class="p-3 text-center text-muted small"><span class="spinner-border spinner-border-sm text-emerald me-2" role="status"></span>Searching Mission Portal...</div>';
+
+            fetch('<?= Helper::baseUrl("api/search") ?>?q=' + encodeURIComponent(query))
+                .then(response => response.json())
+                .then(data => {
+                    if (!Array.isArray(data) || data.length === 0) {
+                        searchResults.innerHTML = '<div class="p-3 text-center text-muted small"><i class="bi bi-search me-1"></i>No matching results for "<strong>' + escapeHtml(query) + '</strong>"</div>';
+                        return;
+                    }
+
+                    let html = '<div class="small text-muted fw-bold px-2 py-1 border-bottom text-uppercase" style="font-size:0.68rem; letter-spacing:0.5px;">Live Search Results</div>';
+                    data.forEach(item => {
+                        html += `
+                            <a href="${item.url}" class="dropdown-item p-2 rounded-3 text-wrap d-block text-decoration-none my-1 hover-bg-light">
+                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                    <span class="fw-bold text-emerald small text-truncate me-2">${escapeHtml(item.title)}</span>
+                                    <span class="badge bg-light text-dark border text-uppercase" style="font-size:0.65rem;">${escapeHtml(item.category)}</span>
+                                </div>
+                                <div class="text-secondary small text-truncate" style="font-size:0.75rem;">${escapeHtml(item.snippet)}</div>
+                            </a>
+                        `;
+                    });
+                    html += `<div class="p-2 border-top text-center"><a href="<?= Helper::baseUrl("search") ?>?q=${encodeURIComponent(query)}" class="small text-emerald fw-bold text-decoration-none">See all results for "${escapeHtml(query)}" &rarr;</a></div>`;
+                    searchResults.innerHTML = html;
+                })
+                .catch(err => {
+                    searchResults.style.display = 'none';
+                });
+        }, 220);
+    });
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+
+    // Close on Escape key
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            searchResults.style.display = 'none';
+        }
+    });
+});
+</script>

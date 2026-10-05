@@ -149,4 +149,63 @@ class InformationController extends Controller {
 </urlset>';
         exit();
     }
+
+    public function apiSearch(Request $request): void {
+        $q = trim((string)$request->get('q'));
+        $results = [];
+
+        if (!empty($q)) {
+            $db = \App\Core\Database::getConnection();
+
+            // 1. Search published public notices & advisories
+            $stmt = $db->prepare("
+                SELECT id, title, slug, category, content, published_at 
+                FROM notices 
+                WHERE is_published = 1 AND (title LIKE :q OR content LIKE :q) 
+                ORDER BY published_at DESC LIMIT 5
+            ");
+            $stmt->execute([':q' => "%{$q}%"]);
+            $notices = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            foreach ($notices as $n) {
+                $results[] = [
+                    'title' => $n['title'],
+                    'url' => Helper::baseUrl('news/view?slug=' . urlencode($n['slug'])),
+                    'category' => 'Public Advisory / News',
+                    'snippet' => substr(strip_tags($n['content']), 0, 90) . '...'
+                ];
+            }
+
+            // 2. Search Static Core Public Service Topics & Features
+            $publicTopics = [
+                ['title' => 'E-Passport Renewal & Biometrics Guidance', 'url' => Helper::baseUrl('consular/passport'), 'category' => 'Consular Service', 'keywords' => ['passport', 'renewal', 'biometrics', 'nin', 'etc', 'epassport']],
+                ['title' => 'Visa Categories, Requirements & Eligibility', 'url' => Helper::baseUrl('consular/visa'), 'category' => 'Consular Service', 'keywords' => ['visa', 'tourist', 'business', 'str', 'twp', 'entry', 'visitor']],
+                ['title' => 'Emergency Travel Certificate (ETC) Intake', 'url' => Helper::baseUrl('consular/etc'), 'category' => 'Consular Service', 'keywords' => ['etc', 'emergency', 'travel', 'certificate', 'lost passport', 'flight']],
+                ['title' => 'Document Authentication & Legalization', 'url' => Helper::baseUrl('consular/legalization'), 'category' => 'Consular Service', 'keywords' => ['legalization', 'attestation', 'marriage', 'birth certificate', 'notary']],
+                ['title' => 'Diaspora Citizen Registration Hub', 'url' => Helper::baseUrl('diaspora/register'), 'category' => 'Diaspora Hub', 'keywords' => ['diaspora', 'register', 'citizen', 'registry', 'kenya', 'diaspora hub']],
+                ['title' => '24/7 Emergency Distress Assistance', 'url' => Helper::baseUrl('emergency'), 'category' => 'Emergency Desk', 'keywords' => ['emergency', 'distress', 'help', 'urgent', 'police', 'hospital']],
+                ['title' => 'Official Seal & Receipt Authenticator', 'url' => Helper::baseUrl('verify'), 'category' => 'Verification', 'keywords' => ['verify', 'authenticator', 'seal', 'receipt', 'code', 'qrcode']],
+                ['title' => 'Track Application & Appointment Voucher', 'url' => Helper::baseUrl('track'), 'category' => 'Status Tracker', 'keywords' => ['track', 'status', 'reference', 'voucher', 'appointment']],
+                ['title' => 'Bilateral Trade & Investment Enquiries', 'url' => Helper::baseUrl('trade'), 'category' => 'Trade & Business', 'keywords' => ['trade', 'investment', 'business', 'commerce', 'nairobi', 'enquiry']],
+                ['title' => 'Discover Nigeria & 36 States Interactive Map', 'url' => Helper::baseUrl('discover-nigeria'), 'category' => 'Culture & Tourism', 'keywords' => ['nigeria', 'states', 'map', 'abuja', 'culture', 'tourism', 'geography']],
+                ['title' => 'Contact the Mission & Office Hours', 'url' => Helper::baseUrl('contact'), 'category' => 'Contact', 'keywords' => ['contact', 'address', 'phone', 'email', 'hours', 'location', 'map']]
+            ];
+
+            foreach ($publicTopics as $topic) {
+                foreach ($topic['keywords'] as $kw) {
+                    if (stripos($kw, $q) !== false || stripos($topic['title'], $q) !== false) {
+                        $results[] = [
+                            'title' => $topic['title'],
+                            'url' => $topic['url'],
+                            'category' => $topic['category'],
+                            'snippet' => 'Official guidance on ' . strtolower($topic['title'])
+                        ];
+                        break;
+                    }
+                }
+            }
+        }
+
+        $this->json($results);
+    }
 }

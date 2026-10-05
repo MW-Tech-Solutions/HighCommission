@@ -107,6 +107,7 @@ $router->get('/gallery', [InformationController::class, 'gallery']);
 $router->get('/downloads', [InformationController::class, 'downloads']);
 $router->get('/faq', [InformationController::class, 'faq']);
 $router->get('/search', [InformationController::class, 'search']);
+$router->get('/api/search', [InformationController::class, 'apiSearch']);
 $router->get('/newsletter', [NewsletterController::class, 'index']);
 $router->post('/newsletter/subscribe', [NewsletterController::class, 'subscribe']);
 $router->get('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe']);

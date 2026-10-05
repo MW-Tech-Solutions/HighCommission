@@ -1,0 +1,51 @@
+# Environment Variables & Security Credentials
+.env
+.env.local
+.env.*
+!.env.example
+
+# Database Backups & SQL Dumps
+*.sql
+*.sqlite
+*.db
+
+# Application Logs
+logs/
+*.log
+
+# User Uploaded Files & Temporary Files
+public/uploads/*
+!public/uploads/.gitkeep
+uploads/*
+!uploads/.gitkeep
+tmp/
+temp/
+
+# Composer / Vendor Dependencies (if using Composer)
+/vendor/
+composer.lock
+
+# Node / NPM Dependencies (if using NPM)
+node_modules/
+npm-debug.log*
+
+# System & OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Configurations
+.idea/
+.vscode/
+*.phpproject
+*.sublime-project
+*.sublime-workspace
+
+# Temporary & Backup Script Files
+*.bak
+bkp.php
