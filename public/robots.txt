@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /services/
+Allow: /diaspora/
+Allow: /trade/
+Allow: /discover-nigeria/
+Allow: /news/
+Allow: /verify
+Disallow: /admin/
+Disallow: /portal/
+Disallow: /files/
+Disallow: /health
+Disallow: /config/
+Disallow: /storage/
+Disallow: /.env
+
+Sitemap: https://nigeriankenya.or.ke/sitemap.xml

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Commission of the Federal Republic of Nigeria | Nairobi, Kenya</title>
+    <meta name="description"
+        content="Official Portal of the High Commission of the Federal Republic of Nigeria in Nairobi, Kenya. E-passport services, visas, consular assistance, anti-fraud verification, and trade integration.">
+
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+       1. TOP DIPLOMATIC SECURITY & NOTICE BAR
+       ========================================================================== -->
+    <div class="top-security-bar">
+        <div class="container top-bar-flex">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <span class="badge-trust">
+                    <i class="fas fa-shield-halved"></i> OFFICIAL DOMAIN VERIFIED
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 0.4rem; color: #F3C649; font-weight: 500;">
+                    <span class="warning-pulse"></span>
+                    <span>⚠️ WARNING: Consular fees are paid ONLINE ONLY via NIS/Remita. Never pay cash to
+                        agents.</span>
+                </span>
+            </div>
+            <div class="top-links">
+                <a href="#verification-section" class="top-link"><i class="fas fa-qrcode" style="color: #10B981;"></i>
+                    Verify Receipt</a>
+                <a href="#" class="top-link" data-modal-target="diaspora-modal"><i class="fas fa-user-shield"></i>
+                    Diaspora Registry</a>
+                <a href="tel:+254795770247" class="top-link" style="color: #F87171;"><i class="fas fa-phone-volume"></i>
+                    Emergency: +254 795 770 247</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       2. MAIN GLASSMORPHISM HEADER
+       ========================================================================== -->
+    <header class="main-header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo-group">
+                    <div class="coat-of-arms-badge">
+                        <svg class="coat-of-arms-svg" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 5 L85 25 L85 75 L50 95 L15 75 L15 25 Z" stroke="#D4AF37" stroke-width="3"
+                                fill="#004D2C" />
+                            <path d="M50 15 L75 30 L75 70 L50 85 L25 70 L25 30 Z" fill="#008751" />
+                            <text x="50" y="55" font-family="Cinzel" font-size="28" fill="#F3C649" text-anchor="middle"
+                                font-weight="bold">Y</text>
+                        </svg>
+                    </div>
+                    <div class="brand-titles">
+                        <span class="brand-title">High Commission of Nigeria</span>
+                        <span class="brand-subtitle">Nairobi · Kenya</span>
+                    </div>
+                </a>
+
+                <ul class="nav-menu" id="nav-menu-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active"><i class="fas fa-house-chimney"></i>
+                            Home</a></li>
+                    <li class="nav-item"><a href="#consular-services" class="nav-link"><i class="fas fa-passport"></i>
+                            Consular & Visas</a></li>
+                    <li class="nav-item"><a href="#verification-section" class="nav-link"><i
+                                class="fas fa-shield-check"></i> Anti-Fraud Seal</a></li>
+                    <li class="nav-item"><a href="#nigeria-map" class="nav-link"><i class="fas fa-map-marked-alt"></i>
+                            Discover Nigeria</a></li>
+                    <li class="nav-item"><a href="#trade-investment" class="nav-link"><i class="fas fa-chart-line"></i>
+                            Trade Desk</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <button class="btn btn-gold" data-modal-target="appointment-modal">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </button>
+                    <button class="mobile-menu-trigger" id="mobile-menu-trigger" aria-label="Toggle Navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       3. HERO SECTION WITH DYNAMIC DASHBOARD
+       ========================================================================== -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg-overlay"></div>
+        <div class="container">
+            <div class="hero-grid">
+
+                <div class="hero-content">
+                    <div class="diplomatic-tag">
+                        <i class="fas fa-award"></i> Official Diplomatic Mission Portal
+                    </div>
+                    <h1 class="hero-heading">
+                        Serving Nigeria.<br>
+                        Welcoming Kenya & <span class="gradient-text">East Africa.</span>
+                    </h1>
+                    <p class="hero-subtext">
+                        The official portal of the High Commission of the Federal Republic of Nigeria in Nairobi —
+                        empowering citizens with streamlined e-passport renewals, biometric scheduling, verified
+                        consular services, and bilateral economic partnerships.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <button class="btn btn-primary" data-modal-target="appointment-modal">
+                            <i class="fas fa-calendar-plus"></i> Schedule Consular Visit
+                        </button>
+                        <a href="#verification-section" class="btn btn-outline">
+                            <i class="fas fa-shield-halved"></i> Verify Application / Receipt
+                        </a>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1.5rem; color: #94A3B8; font-size: 0.85rem;">
+                        <span><i class="fas fa-clock" style="color: #10B981;"></i> Consular Hours: Mon - Fri (9 AM - 3
+                            PM)</span>
+                        <span><i class="fas fa-location-dot" style="color: #D4AF37;"></i> Kilimani, Nairobi</span>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Dashboard -->
+                <div class="hero-dashboard-card">
+                    <div class="card-title-bar">
+                        <div class="card-title">
+                            <i class="fas fa-sliders-h" style="color: var(--gold-glow);"></i> Consular Direct Gateway
+                        </div>
+                        <span
+                            style="font-size: 0.75rem; background: rgba(16,185,129,0.15); color: #34D399; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600;">LIVE
+                            PORTAL</span>
+                    </div>
+
+                    <div class="quick-action-grid">
+                        <div class="action-tile" data-modal-target="appointment-modal">
+                            <div class="tile-icon"><i class="fas fa-passport"></i></div>
+                            <div class="tile-title">E-Passport Renewal</div>
+                            <div class="tile-desc">Book biometric capture & track status.</div>
+                        </div>
+
+                        <div class="action-tile" data-modal-target="calculator-modal">
+                            <div class="tile-icon" style="background: rgba(212,175,55,0.15); color: #F3C649;"><i
+                                    class="fas fa-calculator"></i></div>
+                            <div class="tile-title">Fee Calculator</div>
+                            <div class="tile-desc">Check official NIS & Consular fees.</div>
+                        </div>
+
+                        <a href="#verification-section" class="action-tile">
+                            <div class="tile-icon" style="background: rgba(59,130,246,0.15); color: #60A5FA;"><i
+                                    class="fas fa-qrcode"></i></div>
+                            <div class="tile-title">Anti-Scam Authenticator</div>
+                            <div class="tile-desc">Verify document or receipt validity.</div>
+                        </a>
+
+                        <div class="action-tile" data-modal-target="diaspora-modal">
+                            <div class="tile-icon" style="background: rgba(239,68,68,0.15); color: #F87171;"><i
+                                    class="fas fa-users-rays"></i></div>
+                            <div class="tile-title">Diaspora Portal</div>
+                            <div class="tile-desc">Register as a Nigerian in East Africa.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       4. STATS BANNER
+       ========================================================================== -->
+    <section class="stats-banner">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">220M+</div>
+                    <div class="stat-label">Africa's Most Populous Nation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Largest Economy in Africa</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">36</div>
+                    <div class="stat-label">States + Federal Capital Territory</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Anti-Fraud & Digital E-Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       5. ANTI-FRAUD VERIFICATION ENGINE (SECURITY SHIELD)
+       ========================================================================== -->
+    <section class="section-padding" id="verification-section" style="background: #0B132B;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow"><i class="fas fa-shield-alt"></i> Official Protection System</span>
+                <h2 class="section-title">Document & Receipt Authenticator</h2>
+                <p class="section-subtitle">
+                    Protect yourself against counterfeit websites and unauthorized agents. Enter any High Commission
+                    receipt code, application reference, or Emergency Travel Certificate number to verify its authentic
+                    status.
+                </p>
+            </div>
+
+            <div class="verifier-box">
+                <div
+                    style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                        <h3 style="color: #FFFFFF; font-size: 1.25rem;"><i class="fas fa-key"
+                                style="color: var(--gold-glow);"></i> Enter Reference or Serial Code</h3>
+                        <p style="color: #94A3B8; font-size: 0.85rem;">Try sample code: <code
+                                style="color: #34D399; background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; border-radius: 4px;">NHC-2026-8891</code>
+                            or <code
+                                style="color: #34D399; background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; border-radius: 4px;">NIS-KEN-4402</code>
+                        </p>
+                    </div>
+                    <div class="badge-trust"><i class="fas fa-lock"></i> 256-Bit Encrypted Audit</div>
+                </div>
+
+                <div class="verifier-input-group">
+                    <input type="text" id="doc-ref-input" class="verifier-input"
+                        placeholder="e.g. NHC-2026-8891 or NIS Application Ref..." aria-label="Reference Number">
+                    <button class="btn btn-gold" id="verify-doc-btn">
+                        <i class="fas fa-magnifying-glass"></i> Verify Authenticity
+                    </button>
+                </div>
+
+                <div id="verifier-result-box" class="verifier-result"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       6. CONSULAR & VISA E-SERVICES HUB
+       ========================================================================== -->
+    <section class="section-padding" id="consular-services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Consular Services</span>
+                <h2 class="section-title">What Can We Help You With?</h2>
+                <p class="section-subtitle">Comprehensive e-services tailored for Nigerian citizens in Kenya and
+                    international visitors planning to travel to Nigeria.</p>
+            </div>
+
+            <div class="services-grid">
+
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <div class="service-icon"><i class="fas fa-passport"></i></div>
+                            <span
+                                style="font-size: 0.75rem; background: rgba(212,175,55,0.15); color: #F3C649; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 600;">CITIZEN
+                                SERVICE</span>
+                        </div>
+                        <h3 class="service-title">E-Passport Renewal & Issue</h3>
+                        <p class="service-desc">
+                            Schedule biometric capturing for standard 32-page and 64-page electronic passports. Fast
+                            track renewal guidelines for expired or damaged passports.
+                        </p>
+                        <ul class="service-list">
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Requirement: Valid NIN & NIS
+                                Slip</li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Online Slot Scheduling</li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Biometric Capturing in Nairobi
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary" data-modal-target="appointment-modal" style="width: 100%;">
+                        <i class="fas fa-calendar-alt"></i> Book Capturing Slot
+                    </button>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <div class="service-icon" style="background: rgba(59,130,246,0.15); color: #60A5FA;"><i
+                                    class="fas fa-plane-arrival"></i></div>
+                            <span
+                                style="font-size: 0.75rem; background: rgba(59,130,246,0.15); color: #60A5FA; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 600;">VISITOR
+                                VISA</span>
+                        </div>
+                        <h3 class="service-title">Visa Services to Nigeria</h3>
+                        <p class="service-desc">
+                            Applications for Tourist, Business, Subject to Regularization (STR), and Temporary Work
+                            Permit (TWP) visas for Kenyan citizens and residents.
+                        </p>
+                        <ul class="service-list">
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Visa on Arrival (VoA) Info</li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Business & Investment Visas
+                            </li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Submission Days: Mon & Wed</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline" data-modal-target="calculator-modal" style="width: 100%;">
+                        <i class="fas fa-calculator"></i> Calculate Visa Fees
+                    </button>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-header">
+                            <div class="service-icon" style="background: rgba(239,68,68,0.15); color: #F87171;"><i
+                                    class="fas fa-plane-circle-exclamation"></i></div>
+                            <span
+                                style="font-size: 0.75rem; background: rgba(239,68,68,0.15); color: #F87171; padding: 0.2rem 0.6rem; border-radius: 9999px; font-weight: 600;">EMERGENCY</span>
+                        </div>
+                        <h3 class="service-title">Emergency Travel Certificate</h3>
+                        <p class="service-desc">
+                            Issued exclusively to Nigerian nationals who lost their travel documents and need urgent
+                            one-way travel back home to Nigeria.
+                        </p>
+                        <ul class="service-list">
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Police Abstract & Flight Ticket
+                            </li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> Same-Day Emergency Review</li>
+                            <li class="service-item"><i class="fas fa-circle-check"></i> One-Way Travel Document</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-gold" data-modal-target="etc-modal" style="width: 100%;">
+                        <i class="fas fa-file-signature"></i> Apply for ETC
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       7. INTERACTIVE 36 STATES OF NIGERIA MAP
+       ========================================================================== -->
+    <section class="section-padding" id="nigeria-map" style="background: #0B132B;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow"><i class="fas fa-earth-africa"></i> National Overview</span>
+                <h2 class="section-title">Explore the 36 States & FCT</h2>
+                <p class="section-subtitle">Discover the diverse economic hubs, cultural landmarks, and business
+                    landscapes across the Federal Republic of Nigeria.</p>
+            </div>
+
+            <div class="map-container-wrapper">
+
+                <div class="map-info-panel">
+                    <h3>Interactive Federation Explorer</h3>
+                    <p style="color: #94A3B8; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        Filter states by geo-political region to view state capitals, key commerce sectors, and
+                        investment opportunities.
+                    </p>
+
+                    <div class="region-filter-tabs" id="region-filter-tabs">
+                        <button class="tab-btn active" data-region="All">All Regions</button>
+                        <button class="tab-btn" data-region="North West">North West</button>
+                        <button class="tab-btn" data-region="North East">North East</button>
+                        <button class="tab-btn" data-region="North Central">North Central</button>
+                        <button class="tab-btn" data-region="South West">South West</button>
+                        <button class="tab-btn" data-region="South East">South East</button>
+                        <button class="tab-btn" data-region="South South">South South</button>
+                    </div>
+
+                    <div class="state-cards-scroll" id="states-chips-grid">
+                        <!-- Dynamically populated state chips via JavaScript -->
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <div
+                        style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid rgba(212,175,55,0.3); display: inline-block;">
+                        <svg viewBox="0 0 400 300" style="width: 100%; max-width: 380px; height: auto;">
+                            <path d="M50,150 Q100,50 200,80 T350,150 Q300,250 200,220 Z" fill="#008751" opacity="0.8"
+                                stroke="#D4AF37" stroke-width="3" />
+                            <circle cx="200" cy="140" r="8" fill="#F3C649" />
+                            <text x="200" y="125" fill="#FFFFFF" font-family="Cinzel" font-size="12" font-weight="bold"
+                                text-anchor="middle">ABUJA FCT</text>
+                            <circle cx="100" cy="210" r="6" fill="#34D399" />
+                            <text x="100" y="230" fill="#E2E8F0" font-size="10" text-anchor="middle">Lagos</text>
+                            <circle cx="290" cy="220" r="6" fill="#34D399" />
+                            <text x="290" y="240" fill="#E2E8F0" font-size="10" text-anchor="middle">Port
+                                Harcourt</text>
+                            <circle cx="120" cy="80" r="6" fill="#34D399" />
+                            <text x="120" y="70" fill="#E2E8F0" font-size="10" text-anchor="middle">Kano</text>
+                        </svg>
+                        <h4 style="color: #FFFFFF; font-size: 1.1rem; margin-top: 1rem;">Federal Republic of Nigeria
+                        </h4>
+                        <p style="color: #94A3B8; font-size: 0.8rem;">Click any state on the left to inspect detailed
+                            profile.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       8. MODAL WINDOWS
+       ========================================================================== -->
+
+    <!-- Modal 1: Appointment Booking Modal -->
+    <div class="modal-backdrop" id="appointment-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <h2 style="color: #FFFFFF; font-size: 1.75rem; margin-bottom: 0.5rem;"><i class="fas fa-calendar-check"
+                    style="color: var(--gold-glow);"></i> Book Consular Appointment</h2>
+            <p style="color: #94A3B8; font-size: 0.875rem; margin-bottom: 1.5rem;">Select your preferred date & time
+                slot at the High Commission in Nairobi.</p>
+
+            <form id="appointment-booking-form">
+                <div class="form-group">
+                    <label class="form-label" for="apt-name">Full Applicant Name</label>
+                    <input type="text" id="apt-name" class="form-control" placeholder="e.g. Chukwuemeka Adebayo"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="apt-phone">Telephone / WhatsApp Contact</label>
+                    <input type="tel" id="apt-phone" class="form-control" placeholder="+254 700 000 000" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="apt-service">Service Required</label>
+                    <select id="apt-service" class="form-control" required>
+                        <option value="E-Passport Biometric Capturing">E-Passport Biometric Capturing</option>
+                        <option value="Visa Application Interview">Visa Application Interview</option>
+                        <option value="Document Legalization & Attestation">Document Legalization & Attestation</option>
+                        <option value="Emergency Travel Certificate">Emergency Travel Certificate</option>
+                    </select>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label" for="apt-date">Date</label>
+                        <input type="date" id="apt-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="apt-time">Time Slot</label>
+                        <select id="apt-time" class="form-control" required>
+                            <option value="09:30 AM">09:30 AM</option>
+                            <option value="11:00 AM">11:00 AM</option>
+                            <option value="01:30 PM">01:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-ticket"></i> Confirm Slot & Generate Voucher
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal 2: Appointment Voucher Modal -->
+    <div class="modal-backdrop" id="voucher-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <div id="voucher-content"></div>
+            <div style="margin-top: 1.5rem; text-align: right;">
+                <button class="btn btn-outline" onclick="window.print()"><i class="fas fa-print"></i> Print
+                    Voucher</button>
+                <button class="btn btn-primary" onclick="closeModal('voucher-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Fee Calculator Modal -->
+    <div class="modal-backdrop" id="calculator-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <h2 style="color: #FFFFFF; font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-calculator"
+                    style="color: var(--gold-glow);"></i> Consular Fee Estimator</h2>
+            <p style="color: #94A3B8; font-size: 0.875rem; margin-bottom: 1.5rem;">Official fee schedule for visas,
+                passports, and document attestations.</p>
+
+            <div class="form-group">
+                <label class="form-label" for="calc-service-type">Select Service</label>
+                <select id="calc-service-type" class="form-control">
+                    <option value="130">Single Entry Tourist Visa ($130 USD)</option>
+                    <option value="200">Multiple Entry Business Visa ($200 USD)</option>
+                    <option value="120">Standard 32-Page E-Passport Renewal ($120 USD)</option>
+                    <option value="180">64-Page 10-Year E-Passport ($180 USD)</option>
+                    <option value="50">Document Legalization / Attestation ($50 USD)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="calc-applicant-qty">Number of Applicants</label>
+                <input type="number" id="calc-applicant-qty" class="form-control" value="1" min="1" max="10">
+            </div>
+
+            <div
+                style="background: rgba(0,135,81,0.15); border: 1px solid rgba(16,185,129,0.3); border-radius: var(--radius-md); padding: 1.25rem; text-align: center; margin-top: 1.5rem;">
+                <span style="color: #CBD5E1; font-size: 0.85rem; text-transform: uppercase;">Estimated Official
+                    Fee</span>
+                <div id="calc-total-fee"
+                    style="color: #34D399; font-size: 2rem; font-weight: 800; font-family: 'Playfair Display', serif;">
+                    $130.00 USD</div>
+                <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 0.4rem;">Note: Payments are made strictly via
+                    the official portal upon application submission.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: State Details Modal -->
+    <div class="modal-backdrop" id="state-detail-modal">
+        <div class="modal-card">
+            <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+            <div id="state-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+       MAP FRAME SECTION
+       ========================================================================== -->
+    <section class="map-section" style="width: 100%; border-top: 4px solid var(--green-accent); border-bottom: 3px solid var(--gold-glow); background: #000;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.234920239!2d36.789426!3d-1.28897!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10a5bd9b48d5%3A0xcc7bb0ab2135dc64!2sNigeria%20High%20Commission!5e0!3m2!1sen!2ske!4v1791191520042!5m2!1sen!2ske" width="100%" height="450" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+    <!-- ==========================================================================
+       SUBSCRIBE TO NEWSLETTER SECTION
+       ========================================================================== -->
+    <section class="newsletter-banner" style="background: linear-gradient(135deg, #004D2C 0%, #002B19 100%); color: #fff; padding: 3rem 0; border-bottom: 1px solid rgba(212, 175, 55, 0.3);">
+        <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
+            <div style="max-width: 550px;">
+                <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(212, 175, 55, 0.15); border: 1px solid #D4AF37; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: bold; color: #F3C649; text-transform: uppercase; margin-bottom: 0.5rem;">
+                    <i class="fas fa-paper-plane"></i> STAY INFORMED & CONNECTED
+                </div>
+                <h3 style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem;">Subscribe to Diplomatic Newsletter & Advisories</h3>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.5; margin: 0;">
+                    Get direct public advisories, holiday schedule updates, trade investment briefings, and emergency alerts delivered straight to your email inbox.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 300px; max-width: 500px;">
+                <form action="newsletter" method="POST" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <input type="email" name="email" placeholder="Enter your email address..." required style="flex: 1; min-width: 220px; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid #D4AF37; outline: none; font-size: 0.95rem;">
+                    <button type="submit" style="background: linear-gradient(135deg, #D4AF37 0%, #B38F24 100%); color: #002B19; font-weight: bold; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.95rem;">
+                        <i class="fas fa-envelope"></i> Subscribe Now
+                    </button>
+                </form>
+                <div style="margin-top: 0.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.7); display: flex; justify-content: space-between;">
+                    <span>🔒 Confidential & Secure</span>
+                    <a href="newsletter" style="color: #F3C649; text-decoration: none; font-weight: bold;">Visit Dedicated Newsletter Page &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+       9. FOOTER
+       ========================================================================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand-logo-group" style="margin-bottom: 1rem;">
+                        <div class="coat-of-arms-badge">
+                            <svg class="coat-of-arms-svg" viewBox="0 0 100 100" fill="none">
+                                <path d="M50 5 L85 25 L85 75 L50 95 L15 75 L15 25 Z" stroke="#D4AF37" stroke-width="3"
+                                    fill="#004D2C" />
+                                <text x="50" y="55" font-family="Cinzel" font-size="28" fill="#F3C649"
+                                    text-anchor="middle" font-weight="bold">Y</text>
+                            </svg>
+                        </div>
+                        <div class="brand-titles">
+                            <span class="brand-title" style="font-size: 1rem;">High Commission of Nigeria</span>
+                            <span class="brand-subtitle">Nairobi · Kenya</span>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; line-height: 1.6; color: #94A3B8;">
+                        Promoting diplomatic excellence, consular integrity, trade relations, and diaspora engagement
+                        between the Federal Republic of Nigeria and the Republic of Kenya.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Consular E-Services</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#" data-modal-target="appointment-modal">E-Passport
+                                Renewal</a></li>
+                        <li class="footer-link-item"><a href="#" data-modal-target="calculator-modal">Visa
+                                Applications</a></li>
+                        <li class="footer-link-item"><a href="#" data-modal-target="etc-modal">Emergency Travel
+                                Certificate</a></li>
+                        <li class="footer-link-item"><a href="#verification-section">Anti-Fraud Receipt Check</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">Mission & Nigeria</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#nigeria-map">Interactive 36 States Map</a></li>
+                        <li class="footer-link-item"><a href="#trade-investment">Trade & Investment Desk</a></li>
+                        <li class="footer-link-item"><a href="#" data-modal-target="diaspora-modal">Diaspora
+                                Registration</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-col-title">High Commission Address</h4>
+                    <p style="font-size: 0.85rem; color: #CBD5E1; margin-bottom: 0.5rem;">
+                        <i class="fas fa-location-dot" style="color: var(--gold-glow);"></i> Woodavenue / Lenana Road,
+                        Kilimani, Nairobi, Kenya
+                    </p>
+                    <p style="font-size: 0.85rem; color: #CBD5E1; margin-bottom: 0.5rem;">
+                        <i class="fas fa-envelope" style="color: var(--green-accent);"></i> consular@nigeriankenya.or.ke
+                    </p>
+                    <p style="font-size: 0.85rem; color: #CBD5E1;">
+                        <i class="fas fa-phone" style="color: #60A5FA;"></i> +254 795 770 247
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 High Commission of the Federal Republic of Nigeria, Nairobi. All Rights Reserved.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#" style="color: #94A3B8; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #94A3B8; text-decoration: none;">Terms of Service</a>
+                    <a href="#verification-section" style="color: var(--gold-glow); text-decoration: none;">Security &
+                        Anti-Scam Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

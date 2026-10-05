@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Handle direct asset/upload requests mapped to public directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/([^/]+)/(uploads|assets)/(.*)$
+    RewriteCond %{DOCUMENT_ROOT}/%1/public/%2/%3 -f
+    RewriteRule ^(uploads|assets)/(.*)$ public/$1/$2 [L,NC]
+
+    # Handle assets directly if file exists
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Route all other requests to public/index.php
+    RewriteRule ^(.*)$ public/index.php [QSA,L]
+</IfModule>

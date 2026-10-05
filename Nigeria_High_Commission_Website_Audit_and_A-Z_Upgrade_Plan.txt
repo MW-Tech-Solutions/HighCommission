@@ -1,0 +1,673 @@
+NIGERIA HIGH COMMISSION, NAIROBI, KENYA
+WEBSITE COMPARISON AND A-Z MODERNISATION PLAN
+Prepared: 4 October 2026
+Purpose: proposal, design brief, implementation scope and delivery checklist.
+
+1. RECOMMENDED DIRECTION
+========================
+Build a distinctive diplomatic website with a practical consular service portal.
+The proposal should demonstrate three things together: a premium public website,
+clear journeys for citizens and visitors, and an efficient workspace for staff.
+
+The opportunity is to help people complete the right task with confidence:
+find a service -> understand requirements -> take the correct next step ->
+receive confirmation -> follow progress where the Mission controls the process.
+
+Use elegant Nigerian green, warm white, restrained gold accents, strong typography,
+authentic photography and generous spacing. Put services before lengthy welcomes.
+Provide a fast, accessible experience on mobile, with complete desktop layouts.
+Make approved content and reliable operations the foundation of the design.
+
+2. REVIEW METHOD AND LIMITS
+==========================
+Site A: https://nigeriankenya.or.ke/
+Site B: https://nigeriahighcommissionkenya.org/
+
+The client identifies A as the official site and B as an imitation/proposal.
+This report calls B the comparison site. Domain ownership, authorisation and
+copying were not independently established by this review.
+
+Reviewed public homepages through live Chrome rendering, downloaded HTML and
+desktop/mobile screenshots. Viewports: 1440 x 1000 and 390 x 844 CSS pixels.
+Reviewed A's passport, visa requirements, citizen registration and enquiries
+pages as public page content. Reviewed B's consular index, visa and contact
+pages in the browser. Findings apply to these sampled pages on the review date.
+
+Both homepages returned HTTP 200 in the browser and had no horizontal document
+overflow at the two sampled widths. This is a limited layout check, not full
+responsive, accessibility, browser-compatibility or performance certification.
+Both mobile menu controls opened navigation in the sampled browser. On B,
+selecting Tourist Visa changed the displayed requirements, and Ask the Mission
+opened an assistance panel with suggested questions. No chat query was sent.
+Full-page screenshots can catch lazy-loaded images before they appear; blank
+image areas are not treated here as confirmed missing assets.
+
+No enquiries, applications, payments or registrations were submitted. No private
+admin systems were accessed. A visible button or form does not establish that
+its backend works. No security penetration testing or real-user speed study was
+performed. Current fees, eligibility, processing times, personnel, payment routes
+and immigration policies need Mission approval before reuse.
+
+Evidence: website-audit-evidence/ contains screenshots and extracted public page
+details. Source references are listed at the end of this document.
+
+3. EXISTING DESIGN FLOWS
+=======================
+SITE A: OFFICIAL SITE AS IDENTIFIED BY THE CLIENT
+Sources: [1]-[5]; local official desktop/mobile screenshots.
+
+Homepage sequence:
+Date/search/contact strip -> logo and dropdown navigation -> large photographic
+slideshow -> notices and welcome -> second introduction -> tourism/trade links
+-> newsletter strip -> institutional links and location footer.
+
+Visual character: green and pale green backgrounds, conventional navigation,
+large event photography, mixed typography and white content boxes.
+The mobile layout stacks sections beneath a compact menu.
+
+Strengths: recognisable identity, substantial service information, public notices,
+government links and an existing citizen-registration route.
+
+Improvement opportunities: the hero occupies much of the first desktop screen;
+service actions lack a prominent task panel; introductions repeat; mobile users
+must scroll through substantial content. The public warning is useful but could
+be a concise, consistently styled alert. Source code indicates WordPress assets;
+no conclusions about its maintenance or security follow from that alone.
+
+Sample service journeys:
+- Passport: menu -> instructions -> external immigration application/appointment
+  systems. The renewal section includes a lost-passport letter instruction;
+  separate these scenarios and have an officer verify the text. [2]
+- Visa: menu -> long requirements page -> external application. Divide approved
+  categories into consistent, scannable service pages. [3]
+- Registration: explanation -> downloadable form or separate citizen subdomain.
+  Existing online registration must be assessed before choosing migration or
+  integration; it is not a completely absent capability. [4]
+- Enquiries: physical address, contact channels and a form are published. Improve
+  service routing and acknowledgement; delivery was not tested. [5]
+
+SITE B: COMPARISON SITE
+Sources: [6]-[9]; local comparison screenshots and extracted page details.
+
+Homepage sequence:
+Floating rounded navigation -> large six-slide photographic hero and two actions
+-> Mission introduction and national statistics -> image-led service cards ->
+Nigeria map/country information -> quick-help cards -> notices -> tourism feature
+-> citizen-registration banner -> multi-column footer.
+
+Visual character: rounded panels, strong display headings, green actions,
+cream/light content areas, dark green footer and photography with overlays.
+There is a floating assistance button and a mobile bottom navigation bar.
+HTML assets identify a Next.js frontend; the backend architecture is unknown.
+
+Strengths: stronger visual hierarchy than A, clearer service cards, obvious visa
+action, deliberate mobile navigation and a more consistent component style.
+The consular landing page groups services; the visa page exposes category
+controls and short summary panels. An enquiry form is visible on the contact
+page. These are useful foundations to learn from without copying the design.
+
+Improvement opportunities:
+- The near-full-screen hero and introduction delay the main service catalogue.
+- Many homepage sections produce a long mobile journey.
+- Small navigation and image-overlay copy deserve careful readability testing.
+- The visible contact page gives Nairobi, Kenya without a full street address.
+- Public statistics need dates, definitions and authoritative sources.
+- An assistance control is present, but its existence does not prove a staffed
+  helpdesk, authoritative answer system or useful case-management capability.
+- The sampled pages emphasise guidance and links. A secure applicant dashboard,
+  working booking engine and staff workflow were not demonstrated in this review.
+
+Visa journey: prominent visa action -> category requirements -> external portal
+instructions. Citizen registration is also promoted on the homepage.
+The strongest differentiation is an improved, demonstrable service journey.
+
+4. HOW OUR PROPOSAL SHOULD EXCEED BOTH
+====================================
+Area                 | New design and capability
+---------------------|--------------------------------------------------------
+First screen         | Mission identity, service finder, key tasks, urgent help
+Service information  | Consistent steps, checklists, approved fees and next action
+Mobile               | Shorter routes, readable forms, usable menus and touch areas
+Citizen support      | Verified registration, enquiries and trackable local cases
+Staff operations     | Assigned queues, replies, status changes and audit history
+Trust                | Canonical domain, verified contacts, reviewed public notices
+Content maintenance  | Named owners, approvals, review dates and scheduled expiry
+Quality              | Measured accessibility, speed and task-completion results
+
+These are proposed capabilities and acceptance criteria, not claims that every
+capability is absent from the two sites or already available in the new portal.
+
+5. PROPOSED INFORMATION ARCHITECTURE
+==================================
+Main navigation: Services | Nigerians in Kenya | Visit Nigeria | Trade &
+Investment | The Mission | News & Notices | Contact.
+Utility actions: Search | Emergency Help | My Portal.
+Keep public guidance available without an account.
+
+Home
+Services
+  Service finder and all-services directory
+  Passport guidance: new, renewal, lost/damaged and other approved scenarios
+  Visa guidance: approved categories and external application handoff
+  Emergency travel documents
+  Other consular documents, only where confirmed as offered
+  Requirements, fees and appointment guidance
+  Track a Mission request / find the correct external tracking service
+Nigerians in Kenya
+  Register or update details
+  Community information and approved associations
+  Welfare and emergency guidance
+Visit Nigeria
+  Entry guidance, tourism, culture and practical travel resources
+Trade & Investment
+  Approved sector information, business resources and trade enquiries
+The Mission
+  Mandate, bilateral relations, approved leadership and staff information
+News & Notices
+  News, service changes, closures, events and media gallery
+Contact
+  Verified address, map/directions, office hours, enquiry routes and feedback
+Policies
+  Privacy, accessibility, terms, cookies if applicable and official-site identity
+My Portal
+  Dashboard, profile, saved drafts, requests, appointments and secure messages
+Staff workspace
+  Case queues, registration review, appointment management and content publishing
+
+6. PROPOSED HOMEPAGE FLOW AND VISUAL DIRECTION
+============================================
+01. Slim identity strip: approved official-site wording and urgent notice if active.
+02. Clear header: coat of arms, full Mission name, navigation, search and portal.
+03. Compact hero: one strong authorised image with a concise public-service message.
+04. Beside/within hero: Find a service; Passport; Visa; Citizen Registration;
+    Emergency Help. Each action describes what happens next.
+05. Popular services: six simple cards with icon, description and precise action.
+06. Current service updates: dated notices and relevant closure information.
+07. How to access services: prepare -> apply/book through the right system -> follow up.
+08. Nigerians in Kenya: registration, welfare and community links.
+09. Mission introduction: short statement, approved portrait and link to full details.
+10. News/events: a small selection with dates and an accessible archive.
+11. Trade and tourism: two distinct editorial features.
+12. Visit/contact panel: location, service-specific hours and directions.
+13. Footer: verified contacts, official links, policies, accessibility and feedback.
+
+Desktop concept:
+  [Identity / active alert]
+  [Crest + Mission name] [Navigation] [Search] [My Portal]
+  [Headline + authorised photograph] [What do you need? Task panel]
+  [Passport] [Visa] [Registration] [Documents] [Enquiries] [Emergency]
+  [Service updates] [How it works]
+  [Community] [Mission] [News] [Trade/Tourism] [Visit us] [Footer]
+
+Mobile concept:
+  [Identity + menu] -> [Concise headline] -> [Task panel] -> [Active notice]
+  -> [Services] -> [Remaining editorial sections] -> [Contact + footer].
+  Optional bottom actions: Services, My requests, Help. Validate their usefulness
+  in testing; they must not cover form fields, errors or cookie choices.
+
+Suggested starting design tokens, subject to contrast testing:
+- Primary green #006B45; deep green #063D2D; warm white #F7F8F4.
+- Main text #172A23; restrained accent gold #B68A35; neutral borders #DCE5DF.
+- Gold is decorative unless a tested text/background pairing passes contrast.
+- One highly readable body font; at most one complementary heading family.
+- Body text generally 16-18px; desktop headings 40-56px; mobile headings 28-36px.
+- Comfortable line lengths, consistent spacing, restrained corners and shadows.
+- Use meaningful photos of diplomacy, public service and Nigeria/Kenya relations.
+- Avoid automatic background video and unnecessary animation; honour reduced motion.
+- Confirm rights to photographs, seals and portraits; use approved current assets.
+
+7. A-Z IMPLEMENTATION WORK PLAN
+===============================
+Priority key:
+P0 = required public launch foundation.
+P1 = first operational portal release after workflow/data approval.
+P2 = optional enhancement after the core service is established.
+
+A. AUDIT AND AGREED SCOPE [P0]
+Inventory every existing URL, document, form, subdomain and external dependency.
+Interview consular staff and representative visitors. Establish top tasks,
+service volumes, common mistakes and ownership of each workflow.
+Deliver: signed requirements, content inventory, risk/dependency log and backlog.
+Done when: every existing important service has a retain/rewrite/merge/archive
+decision and a named owner; launch scope and exclusions are explicit.
+
+B. BRAND AND DESIGN SYSTEM [P0]
+Create an original visual identity using approved national/Mission assets.
+Design typography, colours, spacing, layout grids, icons, buttons, forms, cards,
+alerts, navigation, tables, empty states, loading states and error messages.
+Deliver: reusable component library with mobile and desktop examples.
+Done when: approved templates use the same components and tested colour pairs.
+
+C. CONTENT REWRITE AND VALIDATION [P0]
+Rewrite instructions in plain English and remove repetition. Assign a content
+owner, source, approval status, last-review date and next-review date.
+Verify all service facts with the Mission; resolve contradictory instructions.
+Deliver: approved content pack, media library and reusable service template.
+Done when: every published service has a complete, current, approved record.
+
+D. DIGITAL SERVICE DIRECTORY [P0]
+Provide browse and search routes based on the visitor's task. A short finder
+may ask about the service and situation without collecting identity documents.
+Deliver: service directory, category pages and rule-based guided signposting.
+Done when: each top task has a clear route to requirements and the next action,
+including exceptions and the correct authority responsible for the service.
+
+E. EMERGENCY ASSISTANCE [P0]
+Give urgent assistance a prominent, persistent route. Clearly distinguish
+emergency support from routine passport/visa enquiries and published hours.
+Deliver: approved emergency page, verified click-to-call actions and escalation
+instructions; no invented 24-hour availability or unstaffed promises.
+Done when: users can find the appropriate emergency contact without signing in.
+
+F. FORMS AND DOCUMENT HANDLING [P1]
+Use short, labelled steps, inline validation, an error summary and a review page.
+Support draft saving, safe retry, clear submission receipts and accessible help.
+Only collect documents that an approved workflow requires. Use private storage,
+file type/size checks, malware scanning, limited access and retention rules.
+Done when: interrupted sessions recover safely and resubmission cannot silently
+create duplicate cases; rejected uploads give useful, accessible guidance.
+
+G. GOVERNANCE AND OWNERSHIP [P0]
+Define product owner, content approvers, technical owner and service owners.
+Record the Mission's ownership/access for domain, hosting, code, backups, design
+assets, email and paid service accounts. Establish change and publishing rules.
+Deliver: responsibility matrix, approval workflow and account/access register.
+Done when: the Mission can operate and transfer the service without depending
+on one contractor's personal accounts.
+
+H. HOMEPAGE AND NAVIGATION [P0]
+Build the proposed service-led homepage and audience-based navigation.
+Give desktop dropdowns and mobile menus clear labels, focus handling and close
+controls. Keep the complete site name readable and the main actions visible.
+Deliver: homepage, header, footer, search entry and breadcrumb components.
+Done when: test users locate the five priority tasks without staff assistance.
+
+I. INTEGRATIONS AND AUTHORITY BOUNDARIES [P0/P1]
+Identify which services belong to the Mission and which belong to Nigeria
+Immigration Service or another authority. Verify every external destination.
+Launch with clearly labelled official handoff links when no approved API exists.
+Add API integrations only after access, contracts, testing and ownership are clear.
+Done when: users understand where they are applying and no local dashboard
+claims live national passport/visa status without an authorised data source.
+
+J. JOURNEY PROTOTYPES [P0]
+Prototype passport guidance, visa guidance, citizen registration, routine
+enquiry and emergency help. Show both the happy path and common failures.
+Use synthetic demonstration data, clearly labelled as such.
+Deliver: clickable mobile/desktop prototype and a short stakeholder demo script.
+Done when: feedback produces a revised flow before expensive implementation.
+
+K. KNOWLEDGE BASE AND SEARCH [P0; ASSISTANT P2]
+Create approved FAQs and useful search across public services, news and downloads.
+Support common task phrases and clear no-results suggestions. Exclude private
+records, drafts, expired guidance and citizen identifiers from the search index.
+An optional assistant must cite approved pages, show review dates and route
+uncertainty to staff. It must not invent eligibility decisions or collect IDs.
+Done when: the agreed top enquiry phrases return the correct current guidance.
+
+L. LANGUAGE AND ACCESSIBILITY [P0; EXTRA LANGUAGES P2]
+Target WCAG 2.2 AA using automated checks plus manual keyboard and screen-reader
+testing. Include semantic headings, visible focus, clear labels, useful errors,
+text alternatives, zoom/reflow and reduced-motion behaviour. [10]
+Start with approved English; add professionally reviewed Kiswahili if justified
+by audience research and supported by an ongoing translation owner.
+Done when: representative complete journeys pass the agreed accessibility review.
+
+M. MOBILE AND RESPONSIVE BEHAVIOUR [P0]
+Design the smallest layouts first and expand to tablet and desktop. Test 320,
+360, 390, 768, 1024, 1440 and 1920px widths, orientation changes and text zoom.
+Aim for touch controls at least 44px high as a project usability target.
+Use correct input types, autofill and one-column mobile forms. Keep essential
+guidance readable even if decorative images fail.
+Done when: no essential content is clipped, hidden or covered by fixed controls.
+
+N. NEWS, NOTICES AND EVENTS [P0]
+Separate urgent alerts, service notices, diplomatic news and events. Give each
+dates, category, owner and an appropriate expiry/archive rule.
+Allow scheduled publishing and preview. Surface relevant notices on service
+pages, not only on the homepage. Provide accessible galleries and document links.
+Done when: an editor can publish and retire a notice without developer support.
+
+O. ONLINE APPOINTMENTS [P1, MISSION-MANAGED SERVICES ONLY]
+First confirm which appointments are already managed by external authorities.
+For approved local bookings, define service capacity, durations, holidays,
+lead time, cutoffs, rescheduling, cancellation, reminders and staff overrides.
+Store times consistently and show the Africa/Nairobi time zone to applicants.
+Done when: concurrent requests cannot reserve the same last slot; closures and
+cancellations behave correctly. Preserve external booking routes where required.
+
+P. PORTAL ACCOUNTS AND REQUEST TRACKING [P1]
+Provide verified accounts, secure recovery, clear session management and a
+dashboard for Mission-managed requests, drafts, appointments and messages.
+Offer a secure reference-based follow-up route where full accounts add friction.
+Use statuses such as Received, Under review, More information needed and Closed,
+with service-specific states approved by staff.
+Done when: each person sees only their own authorised records and understands
+what the displayed status covers. A local receipt is not a visa/passport approval.
+
+Q. QUALITY ASSURANCE AND ACCEPTANCE [P0/P1]
+Test critical journeys, role permissions, form errors, file handling, session
+expiry, duplicate submissions, unavailable integrations and notification failures.
+Run accessibility, device/browser, performance and authorised security reviews.
+Agree a defect severity model and who accepts the release.
+Done when: no unresolved critical defects remain and owners sign off their flows.
+
+R. REGISTRATION AND COMMUNITY SERVICES [P1]
+Assess the existing citizen-registration system before rebuilding it. Agree
+minimum fields, verification, duplicate handling, updates and records migration.
+Separate service registration from optional community/newsletter subscriptions.
+Keep the citizen registry private; any public association/business directory
+requires an explicit approved publication process.
+Done when: citizens can register/update details and staff can review them safely.
+
+S. SECURITY AND DATA PROTECTION [P0/P1]
+Require staff MFA, least-privilege roles, secure sessions, server-side validation,
+encryption, secret management, audit records, patching and abuse controls.
+Prevent unauthorised record access and keep uploaded documents out of public URLs.
+Agree lawful processing, retention, hosting location, vendor access and incident
+procedures with the Mission's responsible privacy/legal team.
+Use OWASP ASVS to define a relevant verification checklist. [13]
+Done when: approved controls are implemented and independently tested to scope.
+
+T. TRADE, TOURISM AND BILATERAL RELATIONS [P0]
+Create attractive, curated editorial pages with approved photography and useful
+sector/travel resources. Date and source economic figures and policy claims.
+Provide a structured trade-enquiry route with a named receiving team.
+Deliver: reusable feature, destination, sector and bilateral-news templates.
+Done when: content supports a real visitor action and can be updated by editors.
+
+U. USER SUPPORT AND STAFF WORKSPACE [P1]
+Route enquiries by service. Give each request an acknowledgement and reference,
+assign a responsible officer and record replies, internal notes and changes.
+Add overdue queues, search, filters, saved responses and controlled exports.
+Publish response expectations only when staff capacity supports them.
+Done when: a request can move from intake through response to closure with a
+complete history, while internal notes remain invisible to applicants.
+
+V. VERIFIED IDENTITY AND COMMUNICATIONS [P0]
+Use a Mission-approved canonical domain and verified contact directory. Keep
+public website and email identity consistent. Publish an approved official-site
+verification page and service-charge guidance; avoid unsupported accusations.
+Configure domain/email protection, trusted sender identities and alerts for
+certificate/domain expiry. Establish a route for reporting suspicious messages.
+Done when: official channels and permitted payment destinations are unambiguous.
+
+W. WEB PERFORMANCE AND RELIABILITY [P0/P1]
+Optimise images, prioritise the hero asset, defer nonessential embeds and avoid
+loading all slideshow images eagerly. Cache public pages without caching private
+portal responses. Add uptime/error monitoring, backups and restore exercises.
+Aim for field p75 LCP <=2.5s, INP <=200ms and CLS <=0.1. [11]
+Done when: agreed lab/device budgets pass before launch; field targets are
+monitored after sufficient real-user data becomes available.
+
+X. EXPORTS, MIGRATION AND SEARCH DISCOVERY [P0/P1]
+Map old URLs to new destinations with redirects. Preserve useful titles and
+downloads; remove outdated documents from normal navigation and clearly archive.
+Add sitemap, canonical URLs, metadata and appropriate structured public data.
+Migrate private records only through a separately approved, reconciled process.
+Done when: important old links work, migrated counts reconcile, private pages
+are excluded from indexing and the rollback path has been rehearsed.
+
+Y. YEAR-ROUND OPERATIONS AND MEASUREMENT [P0/P1]
+Measure task discovery, successful submissions, enquiry volume, response times,
+appointment no-shows and search failures without exposing personal data.
+Train editors and officers; document publishing, access removal, incident response,
+backup restoration and supplier renewal responsibilities.
+Done when: the Mission has trained owners, runbooks and a recurring review calendar.
+
+Z. ZERO-CRITICAL-DEFECT LAUNCH AND IMPROVEMENT [P0/P1]
+Use a staging environment, final content freeze, verified backups, launch checklist
+and monitored release window. Confirm rollback triggers and decision authority.
+Provide a supported launch period and a prioritised improvement backlog.
+Done when: public journeys, staff operations, notifications and monitoring work
+in production and the Mission accepts the handover.
+This is a critical-defect release gate, not a promise of zero possible defects.
+
+8. CORE USER FLOWS TO DEMONSTRATE
+================================
+Passport guidance:
+Home -> Passport -> Select scenario -> Approved checklist and any prerequisite
+clearance -> Verified immigration application/appointment destination -> Clearly
+explained follow-up route. Never force an unnecessary local application first.
+
+Visa guidance:
+Home -> Visa -> Travel-purpose/category guidance -> Approved requirements,
+payment route and processing information -> External official application.
+Add local steps only if the Mission confirms that they are required.
+
+Citizen registration:
+Home -> Register -> Purpose/privacy explanation -> Verify contact -> Complete
+minimal form -> Review -> Submit -> Receipt -> Officer review -> Update profile.
+Include duplicate-registration and expired-verification recovery paths.
+
+Routine enquiry:
+Service page -> Related FAQ -> Contact service team -> Short form -> Reference
+and acknowledgement -> Assigned officer -> Secure reply -> Closure/feedback.
+
+Emergency:
+Any page -> Emergency Help -> Urgent situation guidance -> Verified contact.
+Do not require account creation or a chatbot conversation to reach urgent help.
+
+Staff case handling:
+MFA sign-in -> Assigned queue -> Read request -> Request information or act ->
+Record outcome -> Notify applicant -> Close -> Audit and reporting.
+
+9. SERVICE PAGE TEMPLATE
+========================
+Every service page should answer:
+1. What is this service, and who is responsible for it?
+2. Who can use it, and which scenario applies?
+3. What documents or information are needed?
+4. Which steps happen online, externally or in person?
+5. What approved charges apply, in which currency, and where are they paid?
+6. What published processing estimate applies, if one is authorised?
+7. Is an appointment required, and who manages it?
+8. How can the visitor follow up or get help?
+9. When was the guidance reviewed, and by which content owner?
+
+Display a precise primary action such as View requirements, Continue to the
+official application portal, Book a Mission appointment or Send an enquiry.
+Do not label an information-only page as a completed application.
+
+10. IMPLEMENTATION APPROACH
+===========================
+Provisional architecture: one maintainable application with clear public,
+citizen and staff areas, a structured content system, relational database,
+private document storage and background notification processing.
+
+If the delivery team supports PHP, Laravel is a reasonable candidate for the
+portal, with server-rendered public pages and targeted interactive components.
+Its documented facilities include authentication, authorisation, validation,
+queues, mail and storage. [12] Select a supported release and compatible runtime
+after checking production requirements; the presence of an XAMPP workspace does
+not establish that its installed PHP is suitable for the eventual deployment.
+
+The design is independent of framework choice. Decide technology during discovery
+using team expertise, hosting rules, existing registration systems, maintenance
+budget and available integrations. A frontend framework alone does not deliver
+citizen services or staff workflows.
+
+Core records: Service, Requirement, Notice, Article, Event, MediaAsset, User,
+CitizenProfile, Request, RequestStatusHistory, Message, Appointment,
+AppointmentSlot, Document, Notification, ContentRevision, Role and AuditEvent.
+Add a payment record only if local payment collection is authorised.
+
+Access boundaries:
+- Visitor: public information and permitted enquiry submission.
+- Citizen: own profile, drafts, requests and permitted documents.
+- Officer: assigned/authorised service records and approved actions.
+- Editor: public content without routine access to citizen documents.
+- Publisher: content approval and release.
+- Administrator: account/configuration functions with audited privileged access.
+- Auditor: appropriately scoped read access to audit records.
+
+Environments: isolated development, staging with synthetic data, and production.
+Mission-controlled repositories and accounts; documented releases and rollback.
+No production personal data in prototype screenshots, analytics or error reports.
+
+11. DELIVERY PHASES AND INDICATIVE SCHEDULE
+==========================================
+Planning estimate only: roughly 12-16 weeks for public launch plus the first
+useful local portal release, assuming a designer, two developers, QA support
+and an available Mission content/operations lead. External approvals, data
+migration and government API access can extend this substantially.
+
+Phase 1, weeks 1-2: discovery, content/URL inventory, service responsibilities,
+approved scope and initial brand direction.
+Phase 2, weeks 3-4: responsive design system, service templates, clickable
+prototype and user/staff feedback.
+Phase 3, weeks 5-8: public website, CMS, search, approved content, migration and
+initial testing. Public launch is possible after its acceptance gates pass.
+Phase 4, weeks 7-12: overlapping portal implementation for approved registration,
+enquiries, local appointments, secure messages and staff queues.
+Phase 5, weeks 13-16: end-to-end testing, accessibility/security review, training,
+controlled migration, operational rehearsal and portal launch.
+After launch: support period, field monitoring and evidence-led improvements.
+
+For the competitive presentation, prepare a clearly labelled prototype in about
+1-2 weeks if content/assets and design feedback are available. Show a polished
+homepage, a complete service journey, mobile screens and a staff queue with demo
+data. Prototype interactions must not be presented as completed live integrations.
+
+12. PRIORITY, DEPENDENCIES AND COST SCOPE
+========================================
+Public launch essentials:
+Brand/design system; responsive public pages; approved service guidance; search;
+emergency/contact routes; CMS approvals; notices; performance/accessibility;
+verified identity; redirects; monitoring; ownership and training.
+
+First portal release, after operations approval:
+Citizen registration or integration with the existing registry; case/enquiry
+tracking; staff workspace; secure notifications; authorised local appointments;
+private document upload only where required.
+
+Later enhancements:
+Additional languages, SMS, community directories, approved-source assistant,
+advanced analytics and deeper national-system integration.
+
+Do not promise by default:
+National visa/passport issuance, biometric capture, live national status feeds,
+local collection of national fees, 24/7 staffed support or automatic legal/visa
+decisions. Each depends on authority, operational capacity and integration scope.
+
+Price the work in separate lines:
+- Discovery, research and scope definition.
+- Branding, UX and responsive interface design.
+- Public website and CMS.
+- Each citizen/staff portal module.
+- Content rewrite, photography and migration.
+- Integrations and external provider setup.
+- Accessibility, security, performance and user acceptance testing.
+- Deployment, documentation and training.
+- Recurring hosting, email/SMS usage, monitoring, backups, maintenance and support.
+Prepare the commercial quote after discovery; no unsupported fixed cost is
+implied by this report. List licence ownership and renewal responsibility.
+
+Main delivery dependencies:
+Approved service rules; existing registry access/export; domain/hosting control;
+validated contact details; asset rights; privacy decisions; staff capacity;
+external portal/API availability; budget and content approval turnaround.
+
+13. ACCEPTANCE SCORECARD
+========================
+These are proposed project targets, not measurements of either existing site.
+
+Findability: at least 90% of representative test participants find their assigned
+priority service within 30 seconds; start with 8-12 participants across audiences.
+Report this as a small usability study, not a population-wide statistical claim.
+
+Responsive layout: agreed priority pages work at all specified widths, with no
+unintended horizontal scroll and no fixed elements covering actions/errors.
+Device coverage: current Chrome, Edge, Firefox and Safari; physical Android and
+iPhone checks for forms, menus, uploads and keyboard behaviour.
+
+Accessibility: WCAG 2.2 AA assessment of representative templates and complete
+critical processes; automated results plus manual keyboard/screen-reader evidence.
+
+Content: every live service has approved requirements, correct destination,
+contact/escalation route and review date. No placeholder identities or fees.
+
+Performance: documented mobile lab budgets and post-launch field monitoring;
+use the Core Web Vitals targets stated in work item W, not an invented score.
+
+Portal integrity: cross-user access tests pass; required status changes are
+auditable; retries do not duplicate requests; notification failures can be retried.
+
+Appointments: no overbooking under the agreed concurrency test; holidays,
+cancellations and rescheduling work in Nairobi local time.
+
+Operations: successful backup restoration, monitored errors, rollback rehearsal,
+account handover and staff training. Agree recovery time/data-loss objectives
+with the Mission before selecting infrastructure and backup frequency.
+
+14. ITEMS TO OBTAIN FROM THE MISSION DURING DISCOVERY
+====================================================
+1. Written confirmation of canonical domain, approved branding and project owner.
+2. Current service catalogue, fees, rules, forms and external application links.
+3. Verified physical address, public contacts, emergency contacts and office hours.
+4. Approved leadership/staff details, photographs and asset permissions.
+5. Existing website, registration portal and content administration access.
+6. Existing appointment arrangements, case volumes and staff responsibilities.
+7. Hosting, privacy, retention, procurement and integration constraints.
+8. Content approval contacts, target dates, budget envelope and support expectations.
+
+15. HANDOVER DELIVERABLES
+=========================
+- Approved audit, requirements, sitemap and prioritised backlog.
+- Original design files, responsive prototype and reusable component specifications.
+- Public website, editorial CMS and agreed citizen/staff portal modules.
+- Approved content library, image rights register and redirect map.
+- Source code, database migrations and environment/deployment documentation.
+- Test evidence, access-role matrix and security/accessibility review outcomes.
+- Monitoring, backup, restore, rollback and incident-response instructions.
+- Editor/officer training, account inventory and Mission-owned administrative access.
+- Support agreement, maintenance calendar and post-launch improvement backlog.
+
+16. PRESENTATION POSITIONING
+============================
+Proposed pitch:
+"A modern digital front door for the Nigeria High Commission in Kenya: clear
+services for the public, secure tools for citizens, and efficient workflows
+for the officers who serve them."
+
+Demonstrate in this order:
+1. A visitor finds the correct service immediately on a phone.
+2. The service page explains the requirements and correct application destination.
+3. A sample Mission request receives a reference and appears in the citizen area.
+4. An officer reviews and responds through a clearly labelled demonstration queue.
+5. An editor updates a notice without code.
+6. Show the delivery phases, measurable quality targets and ownership handover.
+
+17. SOURCE REGISTER
+===================
+Reviewed 4 October 2026. Existing policy statements are review material, not
+independent confirmation that those statements remain valid for applicants.
+
+[1] Site A homepage
+https://nigeriankenya.or.ke/
+[2] Site A passport guidance
+https://nigeriankenya.or.ke/e-passport-application-2/
+[3] Site A visa requirements
+https://nigeriankenya.or.ke/application-requirements/
+[4] Site A citizen registration
+https://nigeriankenya.or.ke/citizen-registration/
+[5] Site A general enquiries
+https://nigeriankenya.or.ke/general-enquiries/
+[6] Site B homepage, retrieved directly and rendered in Chrome
+https://nigeriahighcommissionkenya.org/
+[7] Site B consular directory
+https://nigeriahighcommissionkenya.org/consular
+[8] Site B visa guidance
+https://nigeriahighcommissionkenya.org/consular/visa
+[9] Site B contact page
+https://nigeriahighcommissionkenya.org/contact
+[10] W3C Web Accessibility Initiative: WCAG overview
+https://www.w3.org/WAI/standards-guidelines/wcag/
+[11] Google web.dev: Web Vitals
+https://web.dev/articles/vitals
+[12] Laravel official documentation
+https://laravel.com/docs
+[13] OWASP Application Security Verification Standard
+https://owasp.org/www-project-application-security-verification-standard/
+
+END OF REPORT

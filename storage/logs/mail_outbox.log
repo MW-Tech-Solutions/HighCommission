@@ -1,0 +1,30 @@
+[2026-10-04 20:37:23] OUTBOX ID #1 [status_change]
+To: Tunde Emmanuel <tunde.demo@example.com>
+Subject: Consular Status Update: Under Review
+Body:
+Your passport renewal enquiry has been assigned to a consular officer.
+--------------------------------------------------
+[2026-10-04 20:37:38] OUTBOX ID #2 [status_change]
+To: Tunde Emmanuel <tunde.demo@example.com>
+Subject: Consular Status Update: Under Review
+Body:
+Your passport renewal enquiry has been assigned to a consular officer.
+--------------------------------------------------
+[2026-10-04 20:43:29] OUTBOX ID #3 [status_change]
+To: Tunde Emmanuel <tunde.demo@example.com>
+Subject: Consular Status Update: Under Review
+Body:
+Your passport renewal enquiry has been assigned to a consular officer.
+--------------------------------------------------
+[2026-10-04 20:51:39] OUTBOX ID #4 [status_change]
+To: Tunde Emmanuel <tunde.demo@example.com>
+Subject: Consular Status Update: Under Review
+Body:
+Your passport renewal enquiry has been assigned to a consular officer.
+--------------------------------------------------
+[2026-10-04 21:12:24] OUTBOX ID #5 [status_change]
+To: Tunde Emmanuel <tunde.demo@example.com>
+Subject: Consular Status Update: Under Review
+Body:
+Your passport renewal enquiry has been assigned to a consular officer.
+--------------------------------------------------
