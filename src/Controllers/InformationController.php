@@ -13,31 +13,35 @@ class InformationController extends Controller {
         $results = [];
 
         if (!empty($q)) {
-            $db = \App\Core\Database::getConnection();
+            try {
+                $db = \App\Core\Database::getConnection();
 
-            // 1. Search published public notices & advisories ONLY
-            $stmt = $db->prepare("
-                SELECT id, title, slug, category, content, published_at 
-                FROM notices 
-                WHERE is_published = 1 AND (title LIKE :q OR content LIKE :q) 
-                ORDER BY published_at DESC LIMIT 10
-            ");
-            $stmt->execute([':q' => "%{$q}%"]);
-            $notices = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                // 1. Search published public notices & advisories ONLY
+                $stmt = $db->prepare("
+                    SELECT id, title, slug, category, content, published_at 
+                    FROM notices 
+                    WHERE is_published = 1 AND (title LIKE :q1 OR content LIKE :q2) 
+                    ORDER BY published_at DESC LIMIT 10
+                ");
+                $stmt->execute([':q1' => "%{$q}%", ':q2' => "%{$q}%"]);
+                $notices = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            foreach ($notices as $n) {
-                $results[] = [
-                    'title' => $n['title'],
-                    'url' => Helper::baseUrl('news/view?slug=' . urlencode($n['slug'])),
-                    'category' => 'Public Advisory / News',
-                    'snippet' => substr(strip_tags($n['content']), 0, 180) . '...'
-                ];
+                foreach ($notices as $n) {
+                    $results[] = [
+                        'title' => $n['title'],
+                        'url' => Helper::baseUrl('news/view?slug=' . urlencode($n['slug'])),
+                        'category' => 'Public Advisory / News',
+                        'snippet' => substr(strip_tags($n['content']), 0, 180) . '...'
+                    ];
+                }
+            } catch (\Throwable $e) {
+                // Ignore DB table errors gracefully
             }
 
             // 2. Search Static Core Public Service Topics
             $publicTopics = [
-                ['title' => 'E-Passport Renewal & Biometrics Guidance', 'url' => Helper::baseUrl('consular/passport'), 'category' => 'Consular Service', 'keywords' => ['passport', 'renewal', 'biometrics', 'nin', 'etc']],
-                ['title' => 'Visa Categories, Requirements & Eligibility', 'url' => Helper::baseUrl('consular/visa'), 'category' => 'Consular Service', 'keywords' => ['visa', 'tourist', 'business', 'str', 'twp', 'entry']],
+                ['title' => 'E-Passport Renewal & Biometrics Guidance', 'url' => Helper::baseUrl('consular/passport'), 'category' => 'Consular Service', 'keywords' => ['passport', 'passpo', 'renewal', 'biometrics', 'nin', 'etc', 'epassport']],
+                ['title' => 'Visa Categories, Requirements & Eligibility', 'url' => Helper::baseUrl('consular/visa'), 'category' => 'Consular Service', 'keywords' => ['visa', 'tourist', 'business', 'str', 'twp', 'entry', 'visitor']],
                 ['title' => 'Emergency Travel Certificate (ETC) Intake', 'url' => Helper::baseUrl('consular/etc'), 'category' => 'Consular Service', 'keywords' => ['etc', 'emergency', 'travel', 'certificate', 'lost passport']],
                 ['title' => 'Document Authentication & Legalization', 'url' => Helper::baseUrl('consular/legalization'), 'category' => 'Consular Service', 'keywords' => ['legalization', 'attestation', 'marriage', 'birth certificate']],
                 ['title' => 'Diaspora Citizen Registration Hub', 'url' => Helper::baseUrl('diaspora/register'), 'category' => 'Diaspora Hub', 'keywords' => ['diaspora', 'register', 'citizen', 'registry', 'kenya']],
@@ -155,30 +159,34 @@ class InformationController extends Controller {
         $results = [];
 
         if (!empty($q)) {
-            $db = \App\Core\Database::getConnection();
+            try {
+                $db = \App\Core\Database::getConnection();
 
-            // 1. Search published public notices & advisories
-            $stmt = $db->prepare("
-                SELECT id, title, slug, category, content, published_at 
-                FROM notices 
-                WHERE is_published = 1 AND (title LIKE :q OR content LIKE :q) 
-                ORDER BY published_at DESC LIMIT 5
-            ");
-            $stmt->execute([':q' => "%{$q}%"]);
-            $notices = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+                // 1. Search published public notices & advisories
+                $stmt = $db->prepare("
+                    SELECT id, title, slug, category, content, published_at 
+                    FROM notices 
+                    WHERE is_published = 1 AND (title LIKE :q1 OR content LIKE :q2) 
+                    ORDER BY published_at DESC LIMIT 5
+                ");
+                $stmt->execute([':q1' => "%{$q}%", ':q2' => "%{$q}%"]);
+                $notices = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            foreach ($notices as $n) {
-                $results[] = [
-                    'title' => $n['title'],
-                    'url' => Helper::baseUrl('news/view?slug=' . urlencode($n['slug'])),
-                    'category' => 'Public Advisory / News',
-                    'snippet' => substr(strip_tags($n['content']), 0, 90) . '...'
-                ];
+                foreach ($notices as $n) {
+                    $results[] = [
+                        'title' => $n['title'],
+                        'url' => Helper::baseUrl('news/view?slug=' . urlencode($n['slug'])),
+                        'category' => 'Public Advisory / News',
+                        'snippet' => substr(strip_tags($n['content']), 0, 90) . '...'
+                    ];
+                }
+            } catch (\Throwable $e) {
+                // Ignore DB table errors gracefully
             }
 
             // 2. Search Static Core Public Service Topics & Features
             $publicTopics = [
-                ['title' => 'E-Passport Renewal & Biometrics Guidance', 'url' => Helper::baseUrl('consular/passport'), 'category' => 'Consular Service', 'keywords' => ['passport', 'renewal', 'biometrics', 'nin', 'etc', 'epassport']],
+                ['title' => 'E-Passport Renewal & Biometrics Guidance', 'url' => Helper::baseUrl('consular/passport'), 'category' => 'Consular Service', 'keywords' => ['passport', 'passpo', 'renewal', 'biometrics', 'nin', 'etc', 'epassport']],
                 ['title' => 'Visa Categories, Requirements & Eligibility', 'url' => Helper::baseUrl('consular/visa'), 'category' => 'Consular Service', 'keywords' => ['visa', 'tourist', 'business', 'str', 'twp', 'entry', 'visitor']],
                 ['title' => 'Emergency Travel Certificate (ETC) Intake', 'url' => Helper::baseUrl('consular/etc'), 'category' => 'Consular Service', 'keywords' => ['etc', 'emergency', 'travel', 'certificate', 'lost passport', 'flight']],
                 ['title' => 'Document Authentication & Legalization', 'url' => Helper::baseUrl('consular/legalization'), 'category' => 'Consular Service', 'keywords' => ['legalization', 'attestation', 'marriage', 'birth certificate', 'notary']],
