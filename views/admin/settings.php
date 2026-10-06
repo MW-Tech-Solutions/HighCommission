@@ -460,15 +460,39 @@ $faviconUrl = SystemSetting::getFaviconUrl();
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted small mb-4">Customize the title, subtitle, destination link, and photo image for each of the 4 Discover Nigeria cards displayed on the public homepage.</p>
+                    <p class="text-muted small mb-4">Customize the section title, subtitle, top button, as well as the title, subtitle, destination link, and photo image for each of the 4 Discover Nigeria cards displayed on the public homepage.</p>
                     
+                    <!-- Section Header Settings -->
+                    <div class="p-3 bg-light rounded-3 border mb-4">
+                        <h6 class="fw-bold text-success mb-3" style="font-family: 'Montserrat', sans-serif;"><i class="bi bi-fonts me-1"></i> Section Header & Top Button</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Section Main Title</label>
+                                <input type="text" name="settings[discover_section_title]" class="form-control form-control-sm" value="<?= Helper::sanitize($settings['discover_section_title'] ?? 'DISCOVER NIGERIA') ?>" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Section Subtitle</label>
+                                <input type="text" name="settings[discover_section_subtitle]" class="form-control form-control-sm" value="<?= Helper::sanitize($settings['discover_section_subtitle'] ?? 'Explore our rich culture, vibrant cities and endless opportunities.') ?>" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Top Button Label</label>
+                                <input type="text" name="settings[discover_section_button_label]" class="form-control form-control-sm" value="<?= Helper::sanitize($settings['discover_section_button_label'] ?? 'Explore Nigeria →') ?>" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">Top Button Route / Link</label>
+                                <input type="text" name="settings[discover_section_button_url]" class="form-control form-control-sm" value="<?= Helper::sanitize($settings['discover_section_button_url'] ?? 'discover-nigeria') ?>" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold text-dark mb-3" style="font-family: 'Montserrat', sans-serif;"><i class="bi bi-grid-3x3-gap me-1 text-success"></i> 4 Discover Nigeria Feature Cards</h6>
                     <div class="row g-4">
                         <?php
                         $defaults = [
-                            1 => ['title' => 'Tourism', 'sub' => 'Beaches, parks, landmarks', 'url' => 'discover-nigeria', 'img' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80'],
-                            2 => ['title' => 'Culture', 'sub' => 'Festivals, arts, heritage', 'url' => 'discover-nigeria', 'img' => 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80'],
-                            3 => ['title' => 'Business', 'sub' => 'Invest & grow', 'url' => 'trade', 'img' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80'],
-                            4 => ['title' => 'States of Nigeria', 'sub' => '36 states, endless possibilities', 'url' => 'discover-nigeria/states', 'img' => 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80']
+                            1 => ['title' => 'Tourism', 'sub' => 'Beaches, parks, landmarks', 'url' => 'discover-nigeria', 'img' => Helper::baseUrl('assets/images/discover/tourism.jpg')],
+                            2 => ['title' => 'Culture', 'sub' => 'Festivals, arts, heritage', 'url' => 'discover-nigeria', 'img' => Helper::baseUrl('assets/images/discover/culture.jpg')],
+                            3 => ['title' => 'Business', 'sub' => 'Invest & grow', 'url' => 'trade', 'img' => Helper::baseUrl('assets/images/discover/business.jpg')],
+                            4 => ['title' => 'States of Nigeria', 'sub' => '36 states, endless possibilities', 'url' => 'discover-nigeria/states', 'img' => Helper::baseUrl('assets/images/discover/states.png')]
                         ];
                         for ($i = 1; $i <= 4; $i++):
                             $cTitleKey = "discover_card_{$i}_title";

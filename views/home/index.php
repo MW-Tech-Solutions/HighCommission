@@ -304,34 +304,35 @@
 
 <!-- SECTION 3: DISCOVER NIGERIA (4 DYNAMIC FEATURE CARDS) -->
 <?php
+$sectionTitle = SystemSetting::get('discover_section_title', 'DISCOVER NIGERIA');
+$sectionSub = SystemSetting::get('discover_section_subtitle', 'Explore our rich culture, vibrant cities and endless opportunities.');
+$sectionBtnLabel = SystemSetting::get('discover_section_button_label', 'Explore Nigeria →');
+$sectionBtnUrl = SystemSetting::get('discover_section_button_url', 'discover-nigeria');
+
 $discoverCards = [
     1 => [
         'title' => SystemSetting::get('discover_card_1_title', 'Tourism'),
         'subtitle' => SystemSetting::get('discover_card_1_subtitle', 'Beaches, parks, landmarks'),
         'url' => SystemSetting::get('discover_card_1_url', 'discover-nigeria'),
-        'image' => SystemSetting::getAssetUrl('discover_card_1_image'),
-        'default_image' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80',
+        'image' => SystemSetting::getAssetUrl('discover_card_1_image', 'assets/images/discover/tourism.jpg'),
     ],
     2 => [
         'title' => SystemSetting::get('discover_card_2_title', 'Culture'),
         'subtitle' => SystemSetting::get('discover_card_2_subtitle', 'Festivals, arts, heritage'),
         'url' => SystemSetting::get('discover_card_2_url', 'discover-nigeria'),
-        'image' => SystemSetting::getAssetUrl('discover_card_2_image'),
-        'default_image' => 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80',
+        'image' => SystemSetting::getAssetUrl('discover_card_2_image', 'assets/images/discover/culture.jpg'),
     ],
     3 => [
         'title' => SystemSetting::get('discover_card_3_title', 'Business'),
         'subtitle' => SystemSetting::get('discover_card_3_subtitle', 'Invest & grow'),
         'url' => SystemSetting::get('discover_card_3_url', 'trade'),
-        'image' => SystemSetting::getAssetUrl('discover_card_3_image'),
-        'default_image' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
+        'image' => SystemSetting::getAssetUrl('discover_card_3_image', 'assets/images/discover/business.jpg'),
     ],
     4 => [
         'title' => SystemSetting::get('discover_card_4_title', 'States of Nigeria'),
         'subtitle' => SystemSetting::get('discover_card_4_subtitle', '36 states, endless possibilities'),
         'url' => SystemSetting::get('discover_card_4_url', 'discover-nigeria/states'),
-        'image' => SystemSetting::getAssetUrl('discover_card_4_image'),
-        'default_image' => 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80',
+        'image' => SystemSetting::getAssetUrl('discover_card_4_image', 'assets/images/discover/states.png'),
     ],
 ];
 ?>
@@ -340,32 +341,31 @@ $discoverCards = [
         <div class="row align-items-end mb-4 g-3">
             <div class="col-md-8">
                 <div style="width: 40px; height: 3px; background-color: #D4AF37;" class="mb-2"></div>
-                <h2 class="fw-bold text-emerald-dark m-0" style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem;">DISCOVER NIGERIA</h2>
-                <p class="text-muted small m-0">Explore our rich culture, vibrant cities and endless opportunities.</p>
+                <h2 class="fw-bold text-emerald-dark m-0" style="font-family: 'Montserrat', sans-serif; font-size: 1.6rem;"><?= Helper::sanitize($sectionTitle) ?></h2>
+                <p class="text-muted small m-0"><?= Helper::sanitize($sectionSub) ?></p>
             </div>
             <div class="col-md-4 text-md-end">
-                <a href="<?= Helper::baseUrl('discover-nigeria') ?>" class="btn btn-emerald fw-bold px-4 py-2">
-                    Explore Nigeria &rarr;
+                <a href="<?= Helper::baseUrl($sectionBtnUrl) ?>" class="btn btn-emerald fw-bold px-4 py-2">
+                    <?= Helper::sanitize($sectionBtnLabel) ?>
                 </a>
             </div>
         </div>
 
         <div class="row g-3">
             <?php foreach ($discoverCards as $cIdx => $card): ?>
-                <?php 
-                    $cardImg = !empty($card['image']) ? $card['image'] : $card['default_image'];
-                ?>
                 <div class="col-lg-3 col-md-6">
-                    <div class="card border-0 rounded-4 overflow-hidden shadow-sm h-100 nhc-discover-card position-relative">
-                        <img src="<?= Helper::sanitize($cardImg) ?>" alt="<?= Helper::sanitize($card['title']) ?>" class="w-100" style="height: 200px; object-fit: cover;">
-                        <div class="p-3 bg-emerald-dark text-white d-flex align-items-center justify-content-between">
-                            <div>
-                                <h6 class="fw-bold m-0 text-white"><?= Helper::sanitize($card['title']) ?></h6>
-                                <span class="extra-small opacity-85" style="font-size: 0.75rem;"><?= Helper::sanitize($card['subtitle']) ?></span>
+                    <a href="<?= Helper::baseUrl($card['url']) ?>" class="text-decoration-none">
+                        <div class="card border-0 rounded-4 overflow-hidden shadow-sm h-100 nhc-discover-card position-relative">
+                            <img src="<?= Helper::sanitize($card['image']) ?>" alt="<?= Helper::sanitize($card['title']) ?>" class="w-100" style="height: 190px; object-fit: cover;">
+                            <div class="p-3 bg-emerald-dark text-white d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h6 class="fw-bold m-0 text-white" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem;"><?= Helper::sanitize($card['title']) ?></h6>
+                                    <span class="extra-small text-white-50 d-block mt-0.5" style="font-size: 0.76rem;"><?= Helper::sanitize($card['subtitle']) ?></span>
+                                </div>
+                                <div class="text-gold flex-shrink-0 ms-2"><i class="bi bi-arrow-right fs-5"></i></div>
                             </div>
-                            <a href="<?= Helper::baseUrl($card['url']) ?>" class="text-gold" aria-label="Explore <?= Helper::sanitize($card['title']) ?>"><i class="bi bi-arrow-right fs-5"></i></a>
                         </div>
-                    </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
