@@ -175,6 +175,40 @@ class Helper {
         header("Location: " . $url);
         exit();
     }
+
+    /**
+     * Safely detect MIME type of a file without crashing if finfo extension is missing
+     */
+    public static function getMimeType(string $filePath): string {
+        if (function_exists('finfo_open')) {
+            $finfo = @finfo_open(FILEINFO_MIME_TYPE);
+            if ($finfo !== false) {
+                $mime = @finfo_file($finfo, $filePath);
+                @finfo_close($finfo);
+                if (!empty($mime)) return $mime;
+            }
+        }
+        if (function_exists('mime_content_type')) {
+            $mime = @mime_content_type($filePath);
+            if (!empty($mime)) return $mime;
+        }
+        if (function_exists('getimagesize')) {
+            $info = @getimagesize($filePath);
+            if (!empty($info['mime'])) return $info['mime'];
+        }
+        $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+        $extMap = [
+            'png' => 'image/png',
+            'jpg' => 'image/jpeg',
+            'jpeg' => 'image/jpeg',
+            'webp' => 'image/webp',
+            'gif' => 'image/gif',
+            'ico' => 'image/x-icon',
+            'svg' => 'image/svg+xml',
+            'pdf' => 'application/pdf',
+        ];
+        return $extMap[$ext] ?? 'application/octet-stream';
+    }
 }
 
 

@@ -453,29 +453,37 @@ class AdminController extends Controller {
                     }
 
                     $ext = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                    $mime = finfo_file($finfo, $tmpName);
-                    finfo_close($finfo);
+                    $mime = Helper::getMimeType($tmpName);
 
                     if (!in_array($ext, $allowedExts) || (!in_array($mime, $allowedMimes) && $ext !== 'ico')) {
                         Helper::setFlash('danger', "Invalid image file type for {$fileKey}. Allowed: PNG, JPG, WEBP, GIF, ICO, SVG.");
                         continue;
                     }
 
-                    // Handle SVG sanitization safely without corrupting valid XML attributes like standalone="no"
+                    // Handle SVG sanitization safely without corrupting valid XML attributes
                     if ($ext === 'svg' || $mime === 'image/svg+xml') {
-                        $svgContent = file_get_contents($tmpName);
-                        $svgContent = preg_replace('/<script[\s\S]*?>[\s\S]*?<\/script>/i', '', $svgContent);
-                        $svgContent = preg_replace('/\s+on[a-z]+\s*=\s*(["\'])[^\1]*?\1/i', '', $svgContent);
-                        file_put_contents($tmpName, $svgContent);
+                        $svgContent = @file_get_contents($tmpName);
+                        if ($svgContent !== false) {
+                            $svgContent = preg_replace('/<script[\s\S]*?>[\s\S]*?<\/script>/i', '', $svgContent);
+                            $svgContent = preg_replace('/\s+on[a-z]+\s*=\s*(["\'])[^\1]*?\1/i', '', $svgContent);
+                            @file_put_contents($tmpName, $svgContent);
+                        }
                     }
 
                     $safeFileName = $fileKey . '_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
                     $publicTargetPath = $publicUploadDir . '/' . $safeFileName;
                     $rootTargetPath = $rootUploadDir . '/' . $safeFileName;
 
-                    if (move_uploaded_file($tmpName, $publicTargetPath)) {
+                    $moved = false;
+                    if (@move_uploaded_file($tmpName, $publicTargetPath)) {
                         @copy($publicTargetPath, $rootTargetPath);
+                        $moved = true;
+                    } elseif (@move_uploaded_file($tmpName, $rootTargetPath)) {
+                        @copy($rootTargetPath, $publicTargetPath);
+                        $moved = true;
+                    }
+
+                    if ($moved) {
                         $relativeUrl = 'uploads/branding/' . $safeFileName;
                         $postedSettings[$fileKey] = $relativeUrl;
                     }
