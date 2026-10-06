@@ -633,7 +633,6 @@ class AdminController extends Controller {
                 $subheading = Helper::sanitize($request->post('subheading'));
                 $imageAlt = Helper::sanitize($request->post('image_alt'));
                 $imageDesktop = Helper::sanitize($request->post('image_desktop'));
-                $imageMobile = Helper::sanitize($request->post('image_mobile'));
                 $ctaPLabel = Helper::sanitize($request->post('cta_primary_label'));
                 $ctaPUrl = Helper::sanitize($request->post('cta_primary_url'));
                 $ctaSLabel = Helper::sanitize($request->post('cta_secondary_label'));
@@ -643,29 +642,53 @@ class AdminController extends Controller {
                 $displayOrder = (int)$request->post('display_order');
                 $isEnabled = (int)$request->post('is_enabled');
 
-                // File Upload Handling if file provided
+                // Dual-location File Upload Handling for public and root directories
                 if (!empty($_FILES['desktop_image_file']) && $_FILES['desktop_image_file']['error'] === UPLOAD_ERR_OK) {
                     $file = $_FILES['desktop_image_file'];
                     $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-                    if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-                        $targetDir = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR;
-                        if (!file_exists($targetDir)) mkdir($targetDir, 0755, true);
+                    $allowedExts = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+                    
+                    if (in_array($ext, $allowedExts)) {
+                        $publicTargetDir = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'hero' . DIRECTORY_SEPARATOR;
+                        $rootTargetDir = dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'hero' . DIRECTORY_SEPARATOR;
+
+                        if (!file_exists($publicTargetDir)) @mkdir($publicTargetDir, 0755, true);
+                        if (!file_exists($rootTargetDir)) @mkdir($rootTargetDir, 0755, true);
+
                         $filename = 'hero_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
-                        if (move_uploaded_file($file['tmp_name'], $targetDir . $filename)) {
-                            $imageDesktop = 'assets/images/' . $filename;
+                        $publicFilePath = $publicTargetDir . $filename;
+                        $rootFilePath = $rootTargetDir . $filename;
+
+                        $moved = false;
+                        if (@move_uploaded_file($file['tmp_name'], $publicFilePath)) {
+                            @copy($publicFilePath, $rootFilePath);
+                            $moved = true;
+                        } elseif (@move_uploaded_file($file['tmp_name'], $rootFilePath)) {
+                            @copy($rootFilePath, $publicFilePath);
+                            $moved = true;
                         }
+
+                        if ($moved) {
+                            $imageDesktop = 'assets/images/hero/' . $filename;
+                        } else {
+                            Helper::setFlash('danger', 'Failed to save uploaded hero image.');
+                        }
+                    } else {
+                        Helper::setFlash('danger', 'Invalid hero image file format. Allowed formats: JPG, PNG, WEBP, GIF.');
                     }
                 }
 
                 if (empty($imageDesktop)) {
-                    $imageDesktop = 'assets/images/hero-diplomatic.jpg';
+                    $imageDesktop = 'assets/images/hero/IMG-20260901-WA0014.jpg';
                 }
+
+                $imageMobile = $imageDesktop; // Unified image auto-fits all screen sizes
 
                 $data = [
                     'heading' => $heading,
                     'subheading' => $subheading,
                     'image_desktop' => $imageDesktop,
-                    'image_mobile' => !empty($imageMobile) ? $imageMobile : $imageDesktop,
+                    'image_mobile' => $imageMobile,
                     'image_alt' => !empty($imageAlt) ? $imageAlt : 'Hero Slide Image',
                     'cta_primary_label' => $ctaPLabel,
                     'cta_primary_url' => $ctaPUrl,

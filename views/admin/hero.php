@@ -40,7 +40,7 @@ use App\Core\Helper;
                         <tr>
                             <td class="ps-3 font-monospace fw-bold text-success fs-5">#<?= $s['display_order'] ?></td>
                             <td>
-                                <img src="<?= Helper::baseUrl($s['image_desktop']) ?>" alt="<?= Helper::sanitize($s['image_alt']) ?>" class="rounded shadow-sm border" style="width: 100px; height: 60px; object-fit: cover;">
+                                <img src="<?= Helper::baseUrl($s['image_desktop']) ?>" alt="<?= Helper::sanitize($s['image_alt']) ?>" class="rounded shadow-sm border" style="width: 100px; height: 60px; object-fit: cover;" onerror="this.onerror=null;this.src='<?= Helper::baseUrl('assets/images/hero/IMG-20260901-WA0014.jpg') ?>';">
                             </td>
                             <td>
                                 <div class="fw-bold text-dark fs-6"><?= Helper::sanitize($s['heading']) ?></div>
@@ -110,14 +110,14 @@ use App\Core\Helper;
                                                     <label class="form-label fw-bold">Subheading / Supporting Copy</label>
                                                     <textarea name="subheading" class="form-control" rows="2"><?= Helper::sanitize($s['subheading']) ?></textarea>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-bold">Desktop Image Path</label>
-                                                    <input type="text" name="image_desktop" class="form-control mb-2" value="<?= Helper::sanitize($s['image_desktop']) ?>" required>
+                                                <div class="col-12">
+                                                    <label class="form-label fw-bold">Hero Image Path / Upload File</label>
+                                                    <div class="input-group mb-2">
+                                                        <span class="input-group-text bg-light"><i class="bi bi-image"></i></span>
+                                                        <input type="text" name="image_desktop" class="form-control" value="<?= Helper::sanitize($s['image_desktop']) ?>" required placeholder="assets/images/hero/my-image.jpg">
+                                                    </div>
                                                     <input type="file" name="desktop_image_file" class="form-control form-control-sm" accept="image/*">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label fw-bold">Mobile Image Path (Optional)</label>
-                                                    <input type="text" name="image_mobile" class="form-control" value="<?= Helper::sanitize($s['image_mobile']) ?>">
+                                                    <div class="form-text">Upload a new image or specify an existing path. This image will automatically adapt to fit all screens (Mobile, Tablet, Desktop).</div>
                                                 </div>
                                                 <div class="col-12">
                                                     <label class="form-label fw-bold">Image Alt Text (Accessible Description)</label>
@@ -204,14 +204,14 @@ use App\Core\Helper;
                             <label class="form-label fw-bold">Subheading / Supporting Copy</label>
                             <textarea name="subheading" class="form-control" rows="2" placeholder="Serving Nigerian citizens and visitors across Kenya with transparent guidance..."></textarea>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Desktop Image Path / Upload</label>
-                            <input type="text" name="image_desktop" class="form-control mb-2" value="assets/images/hero-diplomatic.jpg" required>
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Hero Image Path / Upload File</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text bg-light"><i class="bi bi-image"></i></span>
+                                <input type="text" name="image_desktop" class="form-control" value="assets/images/hero/IMG-20260901-WA0014.jpg" required placeholder="assets/images/hero/my-image.jpg">
+                            </div>
                             <input type="file" name="desktop_image_file" class="form-control form-control-sm" accept="image/*">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Mobile Image Path (Optional)</label>
-                            <input type="text" name="image_mobile" class="form-control" placeholder="assets/images/hero-mobile.jpg">
+                            <div class="form-text">Upload a new image or specify an existing image path. This single image will adapt seamlessly across all mobile, tablet, and desktop screens.</div>
                         </div>
                         <div class="col-12">
                             <label class="form-label fw-bold">Image Alt Text (Accessible Description)</label>
