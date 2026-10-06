@@ -192,7 +192,7 @@ $faviconUrl = SystemSetting::getFaviconUrl();
         </header>
 
         <!-- Main Page Body -->
-        <main class="flex-grow-1 p-3 p-lg-4">
+        <main class="flex-grow-1 p-3 p-lg-4 min-w-0" style="min-width: 0; overflow-x: hidden;">
             <?php if ($flash): ?>
                 <div class="alert alert-<?= Helper::sanitize($flash['type']) ?> alert-dismissible fade show shadow-sm rounded-3 border-0 mb-4" role="alert">
                     <i class="bi bi-info-circle-fill me-2"></i><?= Helper::sanitize($flash['message']) ?>

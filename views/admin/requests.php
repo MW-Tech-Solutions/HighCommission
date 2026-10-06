@@ -44,20 +44,20 @@ $closedCount = count(array_filter($requests, fn($r) => in_array($r['status'], ['
     </li>
 </ul>
 
-<div class="card border-0 shadow-sm rounded-4 bg-white overflow-hidden">
+<div class="card border-0 shadow-sm rounded-4 bg-white">
     <div class="card-body p-0">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0" id="requestsTable" style="font-size: 0.86rem;">
+        <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            <table class="table table-hover align-middle mb-0" id="requestsTable" style="font-size: 0.86rem; min-width: 980px;">
                 <thead class="table-light small text-uppercase fw-bold text-muted">
                     <tr>
-                        <th class="ps-3 py-2 text-nowrap">Reference #</th>
-                        <th class="py-2 text-nowrap">Applicant Details</th>
-                        <th class="py-2 text-nowrap">Category</th>
-                        <th class="py-2">Subject</th>
-                        <th class="py-2 text-nowrap">Priority</th>
-                        <th class="py-2 text-nowrap">Status</th>
-                        <th class="py-2 text-nowrap">Assigned Officer</th>
-                        <th class="py-2 text-end pe-3 text-nowrap">Action</th>
+                        <th class="ps-3 py-3 text-nowrap" style="width: 140px;">Reference #</th>
+                        <th class="py-3 text-nowrap" style="width: 220px;">Applicant Details</th>
+                        <th class="py-3 text-nowrap" style="width: 140px;">Category</th>
+                        <th class="py-3" style="min-width: 200px;">Subject</th>
+                        <th class="py-3 text-nowrap" style="width: 100px;">Priority</th>
+                        <th class="py-3 text-nowrap" style="width: 120px;">Status</th>
+                        <th class="py-3 text-nowrap" style="width: 180px;">Assigned Officer</th>
+                        <th class="py-3 text-end pe-3 text-nowrap" style="width: 160px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

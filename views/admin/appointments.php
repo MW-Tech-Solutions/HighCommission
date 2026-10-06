@@ -8,8 +8,8 @@
 
 <div class="card border-0 shadow-sm rounded-4 bg-white">
     <div class="card-body p-0">
-        <div class="table-responsive">
-            <table class="table table-hover align-middle mb-0">
+        <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+            <table class="table table-hover align-middle mb-0" style="min-width: 850px;">
                 <thead class="table-light small">
                     <tr>
                         <th>Voucher #</th>
@@ -18,7 +18,7 @@
                         <th>Scheduled Date</th>
                         <th>Time Slot</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
