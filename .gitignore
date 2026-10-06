@@ -20,6 +20,7 @@ uploads/*
 !uploads/.gitkeep
 tmp/
 temp/
+downloads/
 
 # Composer / Vendor Dependencies (if using Composer)
 /vendor/
