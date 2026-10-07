@@ -22,53 +22,53 @@ $suspendedCount = count(array_filter($users, fn($u) => in_array($u['status'], ['
 <!-- Quick Stats -->
 <div class="row g-3 mb-4">
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-emerald bg-opacity-10 text-emerald">
-                    <i class="bi bi-people-fill fs-3"></i>
+                <div class="stat-icon-wrapper bg-emerald-subtle text-emerald">
+                    <i class="bi bi-people-fill"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Total Accounts</div>
-                    <div class="fs-4 fw-bold text-dark"><?= $totalCount ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px;">Total Accounts</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= $totalCount ?></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-primary bg-opacity-10 text-primary">
-                    <i class="bi bi-person-badge fs-3"></i>
+                <div class="stat-icon-wrapper bg-primary-subtle text-primary">
+                    <i class="bi bi-person-badge-fill"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Citizen Portal Users</div>
-                    <div class="fs-4 fw-bold text-dark"><?= $citizenCount ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px;">Citizen Portal Users</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= $citizenCount ?></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-success bg-opacity-10 text-success">
-                    <i class="bi bi-shield-lock fs-3"></i>
+                <div class="stat-icon-wrapper bg-success-subtle text-success">
+                    <i class="bi bi-shield-check"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Staff Officers</div>
-                    <div class="fs-4 fw-bold text-dark"><?= $staffCount ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px;">Staff Officers</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= $staffCount ?></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-danger bg-opacity-10 text-danger">
-                    <i class="bi bi-person-x-fill fs-3"></i>
+                <div class="stat-icon-wrapper bg-danger-subtle text-danger">
+                    <i class="bi bi-person-x-fill"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Suspended / Pending</div>
-                    <div class="fs-4 fw-bold text-dark"><?= $suspendedCount ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.68rem; letter-spacing: 0.5px;">Suspended / Pending</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= $suspendedCount ?></div>
                 </div>
             </div>
         </div>
@@ -78,35 +78,33 @@ $suspendedCount = count(array_filter($users, fn($u) => in_array($u['status'], ['
 <!-- Filter Nav Pills & Search Bar -->
 <div class="card border-0 shadow-sm rounded-4 bg-white mb-4">
     <div class="card-body p-3">
-        <div class="row g-3 align-items-center">
-            <div class="col-md-8">
-                <ul class="nav nav-pills gap-1" id="userFilterTabs">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active fw-bold px-3 py-1-5 text-nowrap small" data-filter="all">
-                            All Users <span class="badge bg-white text-dark ms-1"><?= $totalCount ?></span>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link fw-bold text-dark px-3 py-1-5 text-nowrap small" data-filter="citizens">
-                            Citizens & Applicants <span class="badge bg-primary text-white ms-1"><?= $citizenCount ?></span>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link fw-bold text-dark px-3 py-1-5 text-nowrap small" data-filter="staff">
-                            Staff Officers <span class="badge bg-success text-white ms-1"><?= $staffCount ?></span>
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link fw-bold text-dark px-3 py-1-5 text-nowrap small" data-filter="suspended">
-                            Suspended / Pending <span class="badge bg-danger text-white ms-1"><?= $suspendedCount ?></span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group input-group-sm">
-                    <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
-                    <input type="text" id="userSearchInput" class="form-control" placeholder="Search name, email, NIN, passport...">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <ul class="nav nav-pills flex-nowrap overflow-auto pb-1 pb-md-0 gap-2" id="userFilterTabs" style="max-width: 100%;">
+                <li class="nav-item">
+                    <button type="button" class="nav-link active fw-bold px-3 py-2 text-nowrap small" data-filter="all">
+                        All Users <span class="badge bg-white text-dark ms-1"><?= $totalCount ?></span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link fw-bold text-dark px-3 py-2 text-nowrap small" data-filter="citizens">
+                        Citizens & Applicants <span class="badge bg-primary text-white ms-1"><?= $citizenCount ?></span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link fw-bold text-dark px-3 py-2 text-nowrap small" data-filter="staff">
+                        Staff Officers <span class="badge bg-success text-white ms-1"><?= $staffCount ?></span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link fw-bold text-dark px-3 py-2 text-nowrap small" data-filter="suspended">
+                        Suspended / Pending <span class="badge bg-danger text-white ms-1"><?= $suspendedCount ?></span>
+                    </button>
+                </li>
+            </ul>
+            <div style="min-width: 260px; max-width: 340px;" class="flex-grow-1 flex-md-grow-0">
+                <div class="input-group input-group-sm rounded-pill overflow-hidden border">
+                    <span class="input-group-text bg-light border-0"><i class="bi bi-search"></i></span>
+                    <input type="text" id="userSearchInput" class="form-control border-0 bg-light" placeholder="Search name, email, NIN, passport...">
                 </div>
             </div>
         </div>

@@ -19,40 +19,40 @@ use App\Core\Helper;
 <!-- Role Stats Overview -->
 <div class="row g-3 mb-4">
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-emerald bg-opacity-10 text-emerald">
-                    <i class="bi bi-shield-check fs-3"></i>
+                <div class="stat-icon-wrapper bg-emerald-subtle text-emerald">
+                    <i class="bi bi-shield-check"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Total Defined Roles</div>
-                    <div class="fs-4 fw-bold text-dark"><?= count($roles) ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Total Defined Roles</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= count($roles) ?></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-primary bg-opacity-10 text-primary">
-                    <i class="bi bi-person-badge fs-3"></i>
+                <div class="stat-icon-wrapper bg-primary-subtle text-primary">
+                    <i class="bi bi-person-badge-fill"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">Active Staff Officers</div>
-                    <div class="fs-4 fw-bold text-dark"><?= count($staffUsers) ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">Active Staff Officers</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= count($staffUsers) ?></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white">
+        <div class="card border-0 shadow-sm rounded-4 p-3 bg-white h-100">
             <div class="d-flex align-items-center gap-3">
-                <div class="rounded-3 p-3 bg-gold bg-opacity-10 text-dark">
-                    <i class="bi bi-key-fill fs-3 text-gold"></i>
+                <div class="stat-icon-wrapper bg-warning-subtle text-warning-emphasis">
+                    <i class="bi bi-key-fill"></i>
                 </div>
                 <div>
-                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.72rem;">System Permissions</div>
-                    <div class="fs-4 fw-bold text-dark"><?= count($allPermissions) ?></div>
+                    <div class="small text-muted text-uppercase fw-bold" style="font-size: 0.7rem; letter-spacing: 0.5px;">System Permissions</div>
+                    <div class="fs-4 fw-bold text-dark mb-0"><?= count($allPermissions) ?></div>
                 </div>
             </div>
         </div>

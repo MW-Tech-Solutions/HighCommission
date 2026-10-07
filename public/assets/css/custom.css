@@ -1351,3 +1351,55 @@ footer ul li a i, .bi-icon-spaced {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
+/* Diplomatic Brand Emerald & Stat Card Utility Classes */
+.bg-emerald {
+    background-color: #008852 !important;
+    color: #ffffff !important;
+}
+.bg-emerald-dark {
+    background-color: #004D2C !important;
+    color: #ffffff !important;
+}
+.bg-emerald-subtle, .bg-emerald-light {
+    background-color: rgba(0, 136, 82, 0.1) !important;
+    color: #008852 !important;
+}
+.text-emerald {
+    color: #008852 !important;
+}
+.text-emerald-dark {
+    color: #004D2C !important;
+}
+.border-emerald {
+    border-color: #008852 !important;
+}
+.btn-emerald {
+    background-color: #008852 !important;
+    border-color: #008852 !important;
+    color: #ffffff !important;
+}
+.btn-emerald:hover, .btn-emerald:focus {
+    background-color: #00683e !important;
+    border-color: #00683e !important;
+    color: #ffffff !important;
+}
+.btn-outline-emerald {
+    color: #008852 !important;
+    border-color: #008852 !important;
+    background-color: transparent !important;
+}
+.btn-outline-emerald:hover, .btn-outline-emerald:focus {
+    background-color: #008852 !important;
+    color: #ffffff !important;
+}
+.stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
