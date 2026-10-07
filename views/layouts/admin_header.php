@@ -83,16 +83,19 @@ $faviconUrl = SystemSetting::getFaviconUrl();
             </a>
 
             <div class="small text-uppercase text-white-50 px-2 fw-bold mt-3 mb-1" style="font-size: 0.68rem; letter-spacing: 1px; font-family: 'Montserrat', sans-serif;">Governance & System</div>
-            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'reports') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/reports') ?>">
+            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'admin/users') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/users') ?>">
+                <i class="bi bi-people-fill me-2 text-gold"></i>User Management
+            </a>
+            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'admin/roles') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/roles') ?>">
+                <i class="bi bi-shield-person me-2 text-gold"></i>Staff & Roles
+            </a>
+            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'admin/reports') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/reports') ?>">
                 <i class="bi bi-bar-chart-line-fill me-2 text-gold"></i>Reports & Workload
             </a>
-            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'users') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/users') ?>">
-                <i class="bi bi-person-gear me-2 text-gold"></i>User & Staff Roles
-            </a>
-            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'settings') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/settings') ?>">
+            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'admin/settings') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/settings') ?>">
                 <i class="bi bi-gear-fill me-2 text-gold"></i>System Settings
             </a>
-            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'audit') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/audit') ?>">
+            <a class="nav-link text-white <?= strpos($_SERVER['REQUEST_URI'], 'admin/audit') !== false ? 'active' : '' ?>" href="<?= Helper::baseUrl('admin/audit') ?>">
                 <i class="bi bi-shield-lock-fill me-2 text-gold"></i>Audit Logs
             </a>
         </nav>
@@ -135,8 +138,9 @@ $faviconUrl = SystemSetting::getFaviconUrl();
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/citizens') ?>"><i class="bi bi-people-fill me-2 text-gold"></i>Diaspora Registry</a>
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/notices') ?>"><i class="bi bi-newspaper me-2 text-gold"></i>News & Advisories</a>
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/hero') ?>"><i class="bi bi-images me-2 text-gold"></i>Hero Slideshow</a>
+                <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/users') ?>"><i class="bi bi-people-fill me-2 text-gold"></i>User Management</a>
+                <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/roles') ?>"><i class="bi bi-shield-person me-2 text-gold"></i>Staff & Roles</a>
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/reports') ?>"><i class="bi bi-bar-chart-line-fill me-2 text-gold"></i>Reports & Analytics</a>
-                <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/users') ?>"><i class="bi bi-person-gear me-2 text-gold"></i>User & Staff Roles</a>
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/settings') ?>"><i class="bi bi-gear-fill me-2 text-gold"></i>System Settings</a>
                 <a class="nav-link text-white py-2 border-bottom border-light border-opacity-10 fw-semibold" href="<?= Helper::baseUrl('admin/audit') ?>"><i class="bi bi-shield-lock-fill me-2 text-gold"></i>Audit Logs</a>
             </nav>

@@ -363,6 +363,7 @@ class AdminController extends Controller {
     public function users(Request $request): void {
         Auth::requirePermission('system.manage_users');
         $db = \App\Core\Database::getConnection();
+        $currentUser = Auth::user();
 
         if ($request->getMethod() === 'POST') {
             if (!Helper::validateCsrf($request->post('csrf_token'))) {
@@ -370,28 +371,96 @@ class AdminController extends Controller {
                 $this->redirect('admin/users');
             }
 
-            $userId = (int)$request->post('user_id');
-            $newRole = $request->post('role');
-            $status = $request->post('status');
-            $currentUser = Auth::user();
+            $action = $request->post('action', 'update');
 
-            if ($userId > 0) {
-                $stmt = $db->prepare("UPDATE users SET role = :role, status = :status WHERE id = :id");
-                $stmt->execute([':role' => $newRole, ':status' => $status, ':id' => $userId]);
+            if ($action === 'create') {
+                $fullName = Helper::sanitize($request->post('full_name'));
+                $email = Helper::sanitize($request->post('email'));
+                $phone = Helper::sanitize($request->post('phone'));
+                $password = $request->post('password');
+                $role = $request->post('role', 'citizen');
+                $status = $request->post('status', 'active');
+                $nin = Helper::sanitize($request->post('nin_number'));
+                $passport = Helper::sanitize($request->post('passport_number'));
 
-                // Sync user_roles
-                $roleIdStmt = $db->prepare("SELECT id FROM roles WHERE slug = :slug LIMIT 1");
-                $roleIdStmt->execute([':slug' => $newRole]);
-                $roleId = $roleIdStmt->fetchColumn();
+                $existing = $db->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
+                $existing->execute([':email' => $email]);
+                if ($existing->fetch()) {
+                    Helper::setFlash('danger', 'An account with this email address already exists.');
+                } else {
+                    $passHash = password_hash($password, PASSWORD_BCRYPT);
+                    $stmt = $db->prepare("INSERT INTO users (full_name, email, phone, password_hash, role, status, nin_number, passport_number) VALUES (:fn, :em, :ph, :phash, :r, :st, :nin, :pass)");
+                    $stmt->execute([
+                        ':fn' => $fullName,
+                        ':em' => $email,
+                        ':ph' => $phone,
+                        ':phash' => $passHash,
+                        ':r' => $role,
+                        ':st' => $status,
+                        ':nin' => $nin,
+                        ':pass' => $passport
+                    ]);
+                    $newId = (int)$db->lastInsertId();
 
-                if ($roleId) {
-                    $db->prepare("DELETE FROM user_roles WHERE user_id = :uid")->execute([':uid' => $userId]);
-                    $db->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (:uid, :rid)")->execute([':uid' => $userId, ':rid' => $roleId]);
+                    $roleIdStmt = $db->prepare("SELECT id FROM roles WHERE slug = :slug LIMIT 1");
+                    $roleIdStmt->execute([':slug' => $role]);
+                    $roleId = $roleIdStmt->fetchColumn();
+                    if ($roleId) {
+                        $db->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (:uid, :rid)")->execute([':uid' => $newId, ':rid' => $roleId]);
+                    }
+
+                    AuditLog::log($currentUser['id'], $currentUser['email'], 'create_user', "Created user account ID {$newId} ({$email}) with role {$role}");
+                    Helper::setFlash('success', 'User account created successfully.');
                 }
+            } elseif ($action === 'reset_password') {
+                $userId = (int)$request->post('user_id');
+                $password = $request->post('password');
+                if ($userId > 0 && !empty($password)) {
+                    $passHash = password_hash($password, PASSWORD_BCRYPT);
+                    $stmt = $db->prepare("UPDATE users SET password_hash = :ph WHERE id = :id");
+                    $stmt->execute([':ph' => $passHash, ':id' => $userId]);
+                    AuditLog::log($currentUser['id'], $currentUser['email'], 'reset_user_password', "Reset password for user ID {$userId}");
+                    Helper::setFlash('success', 'User password updated successfully.');
+                }
+            } else {
+                // Update User Details & Clearance
+                $userId = (int)$request->post('user_id');
+                $fullName = Helper::sanitize($request->post('full_name'));
+                $email = Helper::sanitize($request->post('email'));
+                $phone = Helper::sanitize($request->post('phone'));
+                $newRole = $request->post('role');
+                $status = $request->post('status');
+                $nin = Helper::sanitize($request->post('nin_number'));
+                $passport = Helper::sanitize($request->post('passport_number'));
 
-                AuditLog::log($currentUser['id'], $currentUser['email'], 'manage_user', "Updated user ID {$userId} role to {$newRole}, status to {$status}");
-                Helper::setFlash('success', "User clearance updated successfully.");
+                if ($userId > 0) {
+                    $stmt = $db->prepare("UPDATE users SET full_name = :fn, email = :em, phone = :ph, role = :role, status = :status, nin_number = :nin, passport_number = :pass WHERE id = :id");
+                    $stmt->execute([
+                        ':fn' => $fullName,
+                        ':em' => $email,
+                        ':ph' => $phone,
+                        ':role' => $newRole,
+                        ':status' => $status,
+                        ':nin' => $nin,
+                        ':pass' => $passport,
+                        ':id' => $userId
+                    ]);
+
+                    // Sync user_roles
+                    $roleIdStmt = $db->prepare("SELECT id FROM roles WHERE slug = :slug LIMIT 1");
+                    $roleIdStmt->execute([':slug' => $newRole]);
+                    $roleId = $roleIdStmt->fetchColumn();
+
+                    if ($roleId) {
+                        $db->prepare("DELETE FROM user_roles WHERE user_id = :uid")->execute([':uid' => $userId]);
+                        $db->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (:uid, :rid)")->execute([':uid' => $userId, ':rid' => $roleId]);
+                    }
+
+                    AuditLog::log($currentUser['id'], $currentUser['email'], 'manage_user', "Updated user ID {$userId} role to {$newRole}, status to {$status}");
+                    Helper::setFlash('success', "User clearance and account details updated successfully.");
+                }
             }
+
             $this->redirect('admin/users');
         }
 
@@ -399,6 +468,121 @@ class AdminController extends Controller {
         $roles = $db->query("SELECT * FROM roles ORDER BY name ASC")->fetchAll(PDO::FETCH_ASSOC);
 
         $this->render('admin/users', ['users' => $users, 'roles' => $roles], 'admin');
+    }
+
+    public function roles(Request $request): void {
+        Auth::requirePermission('system.manage_users');
+        $db = \App\Core\Database::getConnection();
+        $currentUser = Auth::user();
+
+        if ($request->getMethod() === 'POST') {
+            if (!Helper::validateCsrf($request->post('csrf_token'))) {
+                Helper::setFlash('danger', 'Invalid security token.');
+                $this->redirect('admin/roles');
+            }
+
+            $action = $request->post('action');
+
+            if ($action === 'update_permissions') {
+                $roleId = (int)$request->post('role_id');
+                $selectedPerms = $request->post('permissions') ?: [];
+
+                if ($roleId > 0) {
+                    $db->prepare("DELETE FROM role_permissions WHERE role_id = :rid")->execute([':rid' => $roleId]);
+                    $insertStmt = $db->prepare("INSERT INTO role_permissions (role_id, permission_id) VALUES (:rid, :pid)");
+                    foreach ($selectedPerms as $pid) {
+                        $insertStmt->execute([':rid' => $roleId, ':pid' => (int)$pid]);
+                    }
+                    AuditLog::log($currentUser['id'], $currentUser['email'], 'manage_role_permissions', "Updated permissions for role ID {$roleId}");
+                    Helper::setFlash('success', 'Role permissions updated successfully.');
+                }
+            } elseif ($action === 'create_role') {
+                $name = Helper::sanitize($request->post('name'));
+                $slug = strtolower(trim(preg_replace('/[^a-zA-Z0-9_]+/', '_', $request->post('slug'))));
+                $description = Helper::sanitize($request->post('description'));
+
+                if (!empty($name) && !empty($slug)) {
+                    $check = $db->prepare("SELECT id FROM roles WHERE slug = :slug LIMIT 1");
+                    $check->execute([':slug' => $slug]);
+                    if ($check->fetch()) {
+                        Helper::setFlash('danger', 'A role with this slug identifier already exists.');
+                    } else {
+                        $stmt = $db->prepare("INSERT INTO roles (name, slug, description, is_system) VALUES (:n, :s, :d, 0)");
+                        $stmt->execute([':n' => $name, ':s' => $slug, ':d' => $description]);
+                        AuditLog::log($currentUser['id'], $currentUser['email'], 'create_role', "Created custom role: {$name} ({$slug})");
+                        Helper::setFlash('success', 'Custom role created successfully.');
+                    }
+                }
+            } elseif ($action === 'create_staff') {
+                $fullName = Helper::sanitize($request->post('full_name'));
+                $email = Helper::sanitize($request->post('email'));
+                $phone = Helper::sanitize($request->post('phone'));
+                $password = $request->post('password');
+                $role = $request->post('role', 'officer');
+
+                $existing = $db->prepare("SELECT id FROM users WHERE email = :email LIMIT 1");
+                $existing->execute([':email' => $email]);
+                if ($existing->fetch()) {
+                    Helper::setFlash('danger', 'A staff account with this email address already exists.');
+                } else {
+                    $passHash = password_hash($password, PASSWORD_BCRYPT);
+                    $stmt = $db->prepare("INSERT INTO users (full_name, email, phone, password_hash, role, status) VALUES (:fn, :em, :ph, :phash, :r, 'active')");
+                    $stmt->execute([
+                        ':fn' => $fullName,
+                        ':em' => $email,
+                        ':ph' => $phone,
+                        ':phash' => $passHash,
+                        ':r' => $role
+                    ]);
+                    $newId = (int)$db->lastInsertId();
+
+                    $roleIdStmt = $db->prepare("SELECT id FROM roles WHERE slug = :slug LIMIT 1");
+                    $roleIdStmt->execute([':slug' => $role]);
+                    $roleId = $roleIdStmt->fetchColumn();
+                    if ($roleId) {
+                        $db->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (:uid, :rid)")->execute([':uid' => $newId, ':rid' => $roleId]);
+                    }
+
+                    AuditLog::log($currentUser['id'], $currentUser['email'], 'create_staff_user', "Registered staff officer {$fullName} ({$email}) with role {$role}");
+                    Helper::setFlash('success', 'Staff officer registered successfully.');
+                }
+            }
+
+            $this->redirect('admin/roles');
+        }
+
+        $roles = $db->query("SELECT * FROM roles ORDER BY id ASC")->fetchAll(PDO::FETCH_ASSOC);
+        $allPermissions = $db->query("SELECT * FROM permissions ORDER BY module ASC, name ASC")->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($roles as &$r) {
+            $userCountStmt = $db->prepare("SELECT COUNT(*) FROM users WHERE role = :slug");
+            $userCountStmt->execute([':slug' => $r['slug']]);
+            $r['user_count'] = (int)$userCountStmt->fetchColumn();
+
+            $permStmt = $db->prepare("
+                SELECT p.* FROM permissions p 
+                INNER JOIN role_permissions rp ON p.id = rp.permission_id 
+                WHERE rp.role_id = :rid 
+                ORDER BY p.module ASC, p.name ASC
+            ");
+            $permStmt->execute([':rid' => $r['id']]);
+            $r['permissions'] = $permStmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        unset($r);
+
+        $staffUsers = $db->query("
+            SELECT u.*, r.name as role_name FROM users u 
+            LEFT JOIN user_roles ur ON u.id = ur.user_id 
+            LEFT JOIN roles r ON ur.role_id = r.id 
+            WHERE u.role != 'citizen' AND u.role != 'public_visitor' 
+            ORDER BY u.created_at DESC
+        ")->fetchAll(PDO::FETCH_ASSOC);
+
+        $this->render('admin/roles', [
+            'roles' => $roles,
+            'allPermissions' => $allPermissions,
+            'staffUsers' => $staffUsers
+        ], 'admin');
     }
 
     public function settings(Request $request): void {

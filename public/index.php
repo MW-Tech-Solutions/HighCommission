@@ -178,6 +178,8 @@ $router->get('/admin/trade', [AdminController::class, 'trade']);
 $router->get('/admin/audit', [AdminController::class, 'audit']);
 $router->get('/admin/users', [AdminController::class, 'users']);
 $router->post('/admin/users', [AdminController::class, 'users']);
+$router->get('/admin/roles', [AdminController::class, 'roles']);
+$router->post('/admin/roles', [AdminController::class, 'roles']);
 $router->get('/admin/settings', [AdminController::class, 'settings']);
 $router->post('/admin/settings', [AdminController::class, 'settings']);
 $router->get('/admin/reports', [AdminController::class, 'reports']);
